@@ -1,4 +1,4 @@
-package ua.goit;
+package ua.goit.util;
 
 import lombok.SneakyThrows;
 import okhttp3.OkHttpClient;
