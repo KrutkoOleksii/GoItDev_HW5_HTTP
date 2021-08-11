@@ -2,7 +2,7 @@ package ua.goit.service;
 
 import retrofit2.Call;
 import retrofit2.http.*;
-import ua.goit.model.Pet;
+import ua.goit.model.*;
 
 import java.util.List;
 
@@ -38,7 +38,56 @@ public interface RetrofitClient {
     @Headers({"Content-Type: application/json"})
     Call<Pet> deletePet(@Path("petId") Integer id);
 
-//
+    // STORE
+    @GET("store/inventory")
+    @Headers({"Content-Type: application/json"})
+    Call<Store> getInventory();
+
+    @POST("store/order")
+    @Headers({"Content-Type: application/json"})
+    Call<Store> addOrder();
+
+    @GET("store/order/{orderId}")
+    @Headers({"Content-Type: application/json"})
+    Call<Store> getOrderById();
+
+    @DELETE("store/order/{orderId}")
+    @Headers({"Content-Type: application/json"})
+    Call<Store> deleteOrderById();
+
+    // USER
+    @POST("user/createWithList")
+    @Headers({"Content-Type: application/json"})
+    Call<User> createUserWithList();
+
+    @GET("user/{userName}")
+    @Headers({"Content-Type: application/json"})
+    Call<User> getUserById();
+
+    @PUT("user/{userName}")
+    @Headers({"Content-Type: application/json"})
+    Call<User> updateUserById();
+
+    @DELETE("user/{userName}")
+    @Headers({"Content-Type: application/json"})
+    Call<User> deleteUserById();
+
+    @GET("user/login")
+    @Headers({"Content-Type: application/json"})
+    Call<User> userLogin();
+
+    @GET("user/logout")
+    @Headers({"Content-Type: application/json"})
+    Call<User> userLogout();
+
+    @POST("user/createWithArray")
+    @Headers({"Content-Type: application/json"})
+    Call<User> createUserWithArray();
+
+    @POST("user")
+    @Headers({"Content-Type: application/json"})
+    Call<User> addUser();
+
 //    @GET("users")
 //    @Headers({"Content-Type: application/json"})
 //    Call<List<User>> getUserByID(@Query("id") Integer id);
