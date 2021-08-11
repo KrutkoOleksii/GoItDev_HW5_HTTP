@@ -8,21 +8,36 @@ import java.util.List;
 
 public interface RetrofitClient {
 
-    @GET("pet")
+    @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> GetToModel();
+    Call<Pet> uploadImage(@Path("petId") Integer id);
+    //additionalMetadata=dog
+    //'file=@dog_noun_001_04904.jpg;type=image/jpeg'
 
-//    @POST("users")
-//    @Headers({"Content-Type: application/json"})
-//    Call<User> addObject(@Body User user);
-//
-//    @PUT("users/{id}")
-//    @Headers({"Content-Type: application/json"})
-//    Call<User> updateUser(@Body User user, @Path("id") String id);
-//
-//    @DELETE("users/{id}")
-//    @Headers({"Content-Type: application/json"})
-//    Call<User> deleteUser(@Path("id") String id);
+    @POST("pet")
+    @Headers({"Content-Type: application/json"})
+    Call<Pet> addObject(@Body Pet pet);
+
+    @PUT("pet")
+    @Headers({"Content-Type: application/json"})
+    Call<Pet> updatePet(@Body Pet pet);
+
+    @GET("pet/findByStatus")
+    @Headers({"Content-Type: application/json"})
+    Call<List<Pet>> findByStatus();
+
+    @GET("pet/{petId}")
+    @Headers({"Content-Type: application/json"})
+    Call<Pet> getToModel(@Path("petId") Integer id);
+
+    @POST("pet/{petId}")
+    @Headers({"Content-Type: application/json"})
+    Call<Pet> updateObject(@Body Pet pet);
+
+    @DELETE("pet/{petId}")
+    @Headers({"Content-Type: application/json"})
+    Call<Pet> deletePet(@Path("petId") Integer id);
+
 //
 //    @GET("users")
 //    @Headers({"Content-Type: application/json"})
