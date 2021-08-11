@@ -18,6 +18,18 @@ public class Pet implements BaseEntity<Integer>{
     @SerializedName("status")
     private String status;
 
+    public Pet(Integer id, Category category, String name, String[] photoUrls, Tag[] tags, String status) {
+        this.id = id;
+        this.category = category;
+        this.name = name;
+        this.photoUrls = photoUrls;
+        this.tags = tags;
+        this.status = status;
+    }
+
+    public Pet() {
+    }
+
     @Override
     public Integer getId() {
         return id;

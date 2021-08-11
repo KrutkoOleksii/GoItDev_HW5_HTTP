@@ -8,6 +8,11 @@ public class Tag implements BaseEntity<Integer> {
     @SerializedName("name")
     private String name;
 
+    public Tag(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
     public Integer getId() {
         return id;

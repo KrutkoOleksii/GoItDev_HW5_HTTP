@@ -8,6 +8,15 @@ public class Category implements BaseEntity<Integer> {
     @SerializedName("name")
     private String name;
 
+    public Category(Integer id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Category() {
+        new Category(0, "out of categories");
+    }
+
     @Override
     public Integer getId() {
         return id;

@@ -18,6 +18,14 @@ public class Store implements BaseEntity<Integer>{
     @SerializedName("complete")
     private Boolean complete;
 
+    public Store(Integer id, Integer petId, Integer quantity, Date shipDate, Integer status, Boolean complete) {
+        this.id = id;
+        this.petId = petId;
+        this.quantity = quantity;
+        this.shipDate = shipDate;
+        this.status = status;
+        this.complete = complete;
+    }
 
     @Override
     public Integer getId() {

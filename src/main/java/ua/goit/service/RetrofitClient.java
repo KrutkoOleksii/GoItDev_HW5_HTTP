@@ -10,33 +10,33 @@ public interface RetrofitClient {
 
     @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> uploadImage(@Path("petId") Integer id);
+    Call<Pet> uploadImage(@Path("petId") Integer id); ////
     //additionalMetadata=dog
     //'file=@dog_noun_001_04904.jpg;type=image/jpeg'
 
     @POST("pet")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> addObject(@Body Pet pet);
+    Call<Pet> addPet(@Body Pet pet); ////
 
     @PUT("pet")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> updatePet(@Body Pet pet);
+    Call<Pet> updatePet(@Body Pet pet); ////
 
     @GET("pet/findByStatus")
     @Headers({"Content-Type: application/json"})
-    Call<List<Pet>> findByStatus();
+    Call<List<Pet>> findByStatus(); ////
 
     @GET("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> getToModel(@Path("petId") Integer id);
+    Call<Pet> getToModel(@Path("petId") Integer id); ////
 
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> updateObject(@Body Pet pet);
+    Call<Pet> updateObject(@Body Pet pet); ////
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> deletePet(@Path("petId") Integer id);
+    Call<Pet> deletePet(@Path("petId") Integer id); ////
 
     // STORE
     @GET("store/inventory")
@@ -45,36 +45,36 @@ public interface RetrofitClient {
 
     @POST("store/order")
     @Headers({"Content-Type: application/json"})
-    Call<Store> addOrder();
+    Call<Store> addOrder(@Body Store store);
 
     @GET("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Store> getOrderById();
+    Call<Store> getOrderById(@Body Store store, @Path("orderId") Integer orderId);
 
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Store> deleteOrderById();
+    Call<Store> deleteOrderById(@Path("orderId") Integer orderId);
 
     // USER
     @POST("user/createWithList")
     @Headers({"Content-Type: application/json"})
-    Call<User> createUserWithList();
+    Call<List<User>> createUserWithList(@Body List<User> users);
 
     @GET("user/{userName}")
     @Headers({"Content-Type: application/json"})
-    Call<User> getUserById();
+    Call<User> getUserByUserName(@Path("userName") String userName);
 
     @PUT("user/{userName}")
     @Headers({"Content-Type: application/json"})
-    Call<User> updateUserById();
+    Call<User> updateUserByUserName(@Body User user, @Path("userName") String userName);
 
     @DELETE("user/{userName}")
     @Headers({"Content-Type: application/json"})
-    Call<User> deleteUserById();
+    Call<User> deleteUserById(@Path("userName") String userName);
 
     @GET("user/login")
     @Headers({"Content-Type: application/json"})
-    Call<User> userLogin();
+    Call<User> userLogin(@Body String username, String password);
 
     @GET("user/logout")
     @Headers({"Content-Type: application/json"})
@@ -82,11 +82,11 @@ public interface RetrofitClient {
 
     @POST("user/createWithArray")
     @Headers({"Content-Type: application/json"})
-    Call<User> createUserWithArray();
+    Call createUserWithArray(@Body User[] users);
 
     @POST("user")
     @Headers({"Content-Type: application/json"})
-    Call<User> addUser();
+    Call addUser(@Body User user);
 
 //    @GET("users")
 //    @Headers({"Content-Type: application/json"})

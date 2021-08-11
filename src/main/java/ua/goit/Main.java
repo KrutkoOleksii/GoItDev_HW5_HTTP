@@ -16,18 +16,26 @@ public class Main {
         RetrofitClient retrofitClient = RetrofitConfig.createClient(BASE_URL,
                 GsonConverterFactory.create(), RetrofitClient.class);
 
-        Pet pet = RetrofitConfig.execute(retrofitClient.getToModel(10));
+        Pet pet = RetrofitConfig.execute(retrofitClient.getToModel(2));
         System.out.println(pet.toString());
 
-//        Pet responseAdd = RetrofitConfig.execute(retrofitClient.addObject(new Pet(10,
-//                new Category(),
-//                "cat",
-//                new String[2]{"new","old"},
-//                new Tag(),
-//                "available"
-//        )));
+        Pet cat = RetrofitConfig.execute(retrofitClient.addPet(new Pet(10,
+                new Category(1,"Cats"),
+                "cat Tom",
+                new String[2],
+                new Tag[1],
+                "available"
+        )));
+        System.out.println(cat.toString());
 
-
+        Pet mouse = RetrofitConfig.execute(retrofitClient.addPet(new Pet(11,
+                new Category(7,"mice"),
+                "mouse Jerry",
+                new String[2],
+                new Tag[1],
+                "available"
+        )));
+        System.out.println(mouse.toString());
 
     }
 }
