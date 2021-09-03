@@ -1,59 +1,62 @@
 package ua.goit.service;
 
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.*;
 import ua.goit.model.*;
 
 import java.util.List;
 
-public interface RetrofitClient {
+public interface RetrofitClient{
 
+    @Multipart
     @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> uploadImage(@Path("petId") Integer id); ////
-    //additionalMetadata=dog
-    //'file=@dog_noun_001_04904.jpg;type=image/jpeg'
+    Call<Response> uploadImage(@Path("petId") Integer id, @Part("additionalMetadata") String additionalMetadata, @Part("file") RequestBody file);
 
     @POST("pet")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> addPet(@Body Pet pet); ////
+    Call<Pet> addPet(@Body Pet pet);
 
     @PUT("pet")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> updatePet(@Body Pet pet); ////
+    Call<Pet> updatePet(@Body Pet pet);
 
     @GET("pet/findByStatus")
     @Headers({"Content-Type: application/json"})
-    Call<List<Pet>> findByStatus(); ////
+    Call<ResponseBody> getPetByStatus(@Query("status") String[] status);
 
     @GET("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> getToModel(@Path("petId") Integer id); ////
+    Call<Pet> getPet(@Path("petId") Integer id);
 
+    @Multipart
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> updateObject(@Body Pet pet); ////
+    Call<Pet> addPetById(@Path("petId") Integer id, @Part("name") String name, @Part("status") String status);
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> deletePet(@Path("petId") Integer id); ////
+    Call<Response> deletePetById(@Path("petId") Integer id);
 
     // STORE
     @GET("store/inventory")
     @Headers({"Content-Type: application/json"})
-    Call<Store> getInventory();
+    Call<Order> getInventory();
 
     @POST("store/order")
     @Headers({"Content-Type: application/json"})
-    Call<Store> addOrder(@Body Store store);
+    Call<Order> addOrder(@Body Order order);
 
     @GET("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Store> getOrderById(@Body Store store, @Path("orderId") Integer orderId);
+    Call<Order> getOrderById(@Body Order order, @Path("orderId") Integer orderId);
 
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Store> deleteOrderById(@Path("orderId") Integer orderId);
+    Call<Order> deleteOrderById(@Path("orderId") Integer orderId);
 
     // USER
     @POST("user/createWithList")
@@ -95,15 +98,5 @@ public interface RetrofitClient {
 //    @GET("users")
 //    @Headers({"Content-Type: application/json"})
 //    Call<List<User>> getUserByUserName(@Query("username") String userName);
-//
-//    @GET("users/{userID}/posts")
-//    @Headers({"Content-Type: application/json"})
-//    Call<List<UserPost>> getUserPosts(@Path("userID") String userID);
-//
-//    @GET("posts/{postID}/comments")
-//    Call<List<Comment>> getComments(@Path("postID") String userID);
-//
-//    @GET("users/{userID}/todos")
-//    Call<List<ToDo>> getTodos(@Path("userID") String userID, @Query("completed") boolean completed);
 
 }

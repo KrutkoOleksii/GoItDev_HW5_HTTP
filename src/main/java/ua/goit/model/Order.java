@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
 
-public class Store implements BaseEntity<Integer>{
+public class Order implements BaseEntity<Integer>{
     @SerializedName("id")
     private Integer id;
     @SerializedName("petId")
@@ -12,13 +12,13 @@ public class Store implements BaseEntity<Integer>{
     @SerializedName("quantity")
     private Integer quantity;
     @SerializedName("shipDate")
-    private Date shipDate;
+    private String shipDate;
     @SerializedName("status")
-    private Integer status;
+    private String status;
     @SerializedName("complete")
     private Boolean complete;
 
-    public Store(Integer id, Integer petId, Integer quantity, Date shipDate, Integer status, Boolean complete) {
+    public Order(Integer id, Integer petId, Integer quantity, String shipDate, String status, Boolean complete) {
         this.id = id;
         this.petId = petId;
         this.quantity = quantity;
