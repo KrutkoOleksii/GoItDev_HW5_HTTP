@@ -2,7 +2,7 @@ package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class User implements BaseEntity<Integer>{
+public class User implements BaseEntity<String>{
     @SerializedName("id")
     private Integer id;
     @SerializedName("username")
@@ -32,8 +32,8 @@ public class User implements BaseEntity<Integer>{
     }
 
     @Override
-    public Integer getId() {
-        return id;
+    public String getId() {
+        return username;
     }
 
     @Override

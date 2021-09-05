@@ -2,8 +2,6 @@ package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Date;
-
 public class Order implements BaseEntity<Integer>{
     @SerializedName("id")
     private Integer id;

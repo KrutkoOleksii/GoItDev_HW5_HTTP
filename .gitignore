@@ -1,1 +1,10 @@
 /.idea/
+/target/classes/ua/goit/model/BaseEntity.class
+/target/classes/ua/goit/model/Category.class
+/target/classes/ua/goit/Main.class
+/target/classes/ua/goit/model/Pet.class
+/target/classes/ua/goit/service/RetrofitClient.class
+/target/classes/ua/goit/util/RetrofitConfig.class
+/target/classes/ua/goit/model/Store.class
+/target/classes/ua/goit/model/Tag.class
+/target/classes/ua/goit/model/User.class

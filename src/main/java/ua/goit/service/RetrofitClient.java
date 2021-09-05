@@ -9,7 +9,7 @@ import ua.goit.model.*;
 
 import java.util.List;
 
-public interface RetrofitClient{
+public interface RetrofitClient {
 
     @Multipart
     @POST("pet/{petId}/uploadImage")
@@ -35,16 +35,16 @@ public interface RetrofitClient{
     @Multipart
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> addPetById(@Path("petId") Integer id, @Part("name") String name, @Part("status") String status);
+    Call<Pet> updatePetById(@Path("petId") Integer id, @Part("name") RequestBody name, @Part("status") RequestBody status);
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Response> deletePetById(@Path("petId") Integer id);
+    Call<ResponseBody> deletePetById(@Path("petId") Integer id);
 
     // STORE
     @GET("store/inventory")
     @Headers({"Content-Type: application/json"})
-    Call<Order> getInventory();
+    Call<ResponseBody> getInventory();
 
     @POST("store/order")
     @Headers({"Content-Type: application/json"})
@@ -52,16 +52,16 @@ public interface RetrofitClient{
 
     @GET("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Order> getOrderById(@Body Order order, @Path("orderId") Integer orderId);
+    Call<Order> getOrderById(@Path("orderId") Integer orderId);
 
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Order> deleteOrderById(@Path("orderId") Integer orderId);
+    Call<ResponseBody> deleteOrderById(@Path("orderId") Integer orderId);
 
     // USER
     @POST("user/createWithList")
     @Headers({"Content-Type: application/json"})
-    Call<List<User>> createUserWithList(@Body List<User> users);
+    Call<ResponseBody> createUserWithList(@Body List<User> users);
 
     @GET("user/{userName}")
     @Headers({"Content-Type: application/json"})
@@ -73,11 +73,11 @@ public interface RetrofitClient{
 
     @DELETE("user/{userName}")
     @Headers({"Content-Type: application/json"})
-    Call<User> deleteUserById(@Path("userName") String userName);
+    Call<ResponseBody> deleteUserById(@Path("userName") String userName);
 
     @GET("user/login")
     @Headers({"Content-Type: application/json"})
-    Call<User> userLogin(@Body String username, String password);
+    Call<User> userLogin(@Query("username") String username, @Query("password") String password);
 
     @GET("user/logout")
     @Headers({"Content-Type: application/json"})
@@ -85,11 +85,11 @@ public interface RetrofitClient{
 
     @POST("user/createWithArray")
     @Headers({"Content-Type: application/json"})
-    Call createUserWithArray(@Body User[] users);
+    Call<ResponseBody> createUserWithArray(@Body User[] users);
 
     @POST("user")
     @Headers({"Content-Type: application/json"})
-    Call addUser(@Body User user);
+    Call<User>  addUser(@Body User user);
 
 //    @GET("users")
 //    @Headers({"Content-Type: application/json"})
