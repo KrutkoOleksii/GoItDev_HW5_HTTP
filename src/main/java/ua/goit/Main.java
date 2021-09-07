@@ -7,6 +7,7 @@ import ua.goit.repository.BaseRepository;
 import ua.goit.repository.OrderRepository;
 import ua.goit.repository.PetRepository;
 import ua.goit.repository.UserRepository;
+import ua.goit.service.handler.MenuHandler;
 import ua.goit.util.BaseConnect;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.RetrofitConfig;
@@ -28,6 +29,7 @@ public class Main {
 
         Main console = new Main();
         console = console.mainMenu(console);
+
         System.out.println("Application has been shut down");
         System.out.println("************************************");
 
@@ -91,7 +93,8 @@ public class Main {
                         new String[]{"http://pics.pets.ua/mouse1.png", "http://pics.pets.ua/mouse2.png"},
                         new Tag[]{new Tag(1, "mouse"), new Tag(2, "Jerry")},
                         "available"
-                ));
+                )
+        );
         System.out.println("-. add Pet:\n" + mouse.toString());
 
         Pet getPet = (Pet) petRepository.getEntity(1);
