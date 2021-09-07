@@ -7,7 +7,7 @@ import ua.goit.repository.BaseRepository;
 import ua.goit.repository.OrderRepository;
 import ua.goit.repository.PetRepository;
 import ua.goit.repository.UserRepository;
-import ua.goit.service.handler.MenuHandler;
+import ua.goit.service.handler.HandlerMenu;
 import ua.goit.util.BaseConnect;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.RetrofitConfig;
@@ -23,7 +23,8 @@ public class Main {
     private static final BaseRepository orderRepository = new OrderRepository();
     private static final BaseRepository userRepository = new UserRepository();
     private static final Scanner scanner = new Scanner(System.in);
-    private final MenuHandler menuHandler = new MenuHandler();
+    //private final HandlerMenu menuHandler = new HandlerMenu();
+
 
     public static void main(String[] args) {
 
@@ -224,8 +225,9 @@ public class Main {
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
-            String[] split = selection.split("\\|");
-            menuHandler.stringHandler(split);
+            String[] command = selection.split("\\|");
+            if (command.length>1) HandlerMenu.of().handle(command);
+//            menuHandler.stringHandler(command);
         }
         return console;
     }
@@ -241,8 +243,9 @@ public class Main {
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
-            String[] split = selection.split("\\|");
-            menuHandler.stringHandler(split);
+            String[] command = selection.split("\\|");
+            if (command.length>1) HandlerMenu.of().handle(command);
+//            menuHandler.stringHandler(split);
         }
         return console;
     }
@@ -262,8 +265,9 @@ public class Main {
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
-            String[] split = selection.split("\\|");
-            menuHandler.stringHandler(split);
+            String[] command = selection.split("\\|");
+            if (command.length>1) HandlerMenu.of().handle(command);
+//            menuHandler.stringHandler(split);
         }
         return console;
     }
