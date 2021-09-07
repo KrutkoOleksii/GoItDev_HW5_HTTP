@@ -1,5 +1,9 @@
 package ua.goit.service.handler;
 
+import ua.goit.model.Pet;
+import ua.goit.repository.BaseRepository;
+import ua.goit.repository.PetRepository;
+
 public class HandlerPetPut extends HandlerMenu {
 
     public HandlerPetPut(HandlerMenu handler){
@@ -8,7 +12,9 @@ public class HandlerPetPut extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
+        BaseRepository<Integer, Pet> petRepository = new PetRepository();
+        Pet updatePet = petRepository.updateEntity(getPetFromConsole());
+        System.out.println("3. update Pet:\n" + updatePet.toString());
     }
 
     @Override

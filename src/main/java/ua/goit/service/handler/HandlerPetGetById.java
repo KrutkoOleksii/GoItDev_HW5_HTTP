@@ -1,5 +1,9 @@
 package ua.goit.service.handler;
 
+import ua.goit.model.Pet;
+import ua.goit.repository.BaseRepository;
+import ua.goit.repository.PetRepository;
+
 public class HandlerPetGetById extends HandlerMenu {
 
     public HandlerPetGetById(HandlerMenu handler){
@@ -8,7 +12,9 @@ public class HandlerPetGetById extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
+        BaseRepository petRepository = new PetRepository();
+        Pet getPet = (Pet) petRepository.getEntity(Integer.valueOf(command[2]));
+        System.out.println("get Pet By Id:\n" + getPet.toString());
     }
 
     @Override

@@ -52,26 +52,26 @@ public class Main {
 //        ResponseBody response1 = RetrofitConfig.execute(retrofitClient.uploadPetImage(1, addMetadata, filePart));
 
         // 2. POST
-        Pet newPet = (Pet) petRepository.createEntity(
-                new Pet(1,
-                        new Category(1, "Cats"),
-                        "cat tom",
-                        new String[]{"http://pics.pets.ua/cat1.png", "http://pics.pets.ua/cat2.png"},
-                        new Tag[]{new Tag(1, "cat"), new Tag(2, "tom")},
-                        "available"
-                ));
-        System.out.println("2. add Pet:\n" + newPet.toString());
+//        Pet newPet = (Pet) petRepository.createEntity(
+//                new Pet(1,
+//                        new Category(1, "Cats"),
+//                        "cat tom",
+//                        new String[]{"http://pics.pets.ua/cat1.png", "http://pics.pets.ua/cat2.png"},
+//                        new Tag[]{new Tag(1, "cat"), new Tag(2, "tom")},
+//                        "available"
+//                ));
+//        System.out.println("2. add Pet:\n" + newPet.toString());
 
         // 3. PUT
-        Pet updatePet = (Pet) petRepository.updateEntity(
-                new Pet(1,
-                        new Category(1, "Cats"),
-                        "cat Tom",
-                        new String[]{"http://pics.pets.ua/cat3.png", "http://pics.pets.ua/cat4.png"},
-                        new Tag[]{new Tag(1, "cat"), new Tag(2, "Tom")},
-                        "sold"
-                ));
-        System.out.println("3. update Pet:\n" + updatePet.toString());
+//        Pet updatePet = (Pet) petRepository.updateEntity(
+//                new Pet(1,
+//                        new Category(1, "Cats"),
+//                        "cat Tom",
+//                        new String[]{"http://pics.pets.ua/cat3.png", "http://pics.pets.ua/cat4.png"},
+//                        new Tag[]{new Tag(1, "cat"), new Tag(2, "Tom")},
+//                        "sold"
+//                ));
+//        System.out.println("3. update Pet:\n" + updatePet.toString());
 
         // ****** getByParam
         // 4. GET (https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=sold)
@@ -98,12 +98,12 @@ public class Main {
         );
         System.out.println("-. add Pet:\n" + mouse.toString());
 
-        Pet getPet = (Pet) petRepository.getEntity(1);
-        System.out.println("6.1 get Pet By Id:\n" + getPet.toString());
+//        Pet getPet = (Pet) petRepository.getEntity(1);
+//        System.out.println("6.1 get Pet By Id:\n" + getPet.toString());
 
         // 6. DELETE
-        ResponseBody body = petRepository.deleteEntity(2);
-        System.out.println("6.2 delete Pet By Id:\n" + body.toString());
+//        ResponseBody body = petRepository.deleteEntity(2);
+//        System.out.println("6.2 delete Pet By Id:\n" + body.toString());
 
         // STORE
 
