@@ -1,5 +1,6 @@
 package ua.goit.service;
 
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
@@ -14,7 +15,8 @@ public interface RetrofitClient {
     @Multipart
     @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
-    Call<Response> uploadImage(@Path("petId") Integer id, @Part("additionalMetadata") String additionalMetadata, @Part("file") RequestBody file);
+    //Call<ResponseBody> uploadPetImage(@Path("petId") Integer id, @Part("additionalMetadata") String additionalMetadata, @Part("file") RequestBody image);
+    Call<ResponseBody> uploadPetImage(@Path("petId") Integer id, @Part MultipartBody.Part additionalMetadata, @Part MultipartBody.Part filePart);
 
     @POST("pet")
     @Headers({"Content-Type: application/json"})

@@ -1,8 +1,6 @@
 package ua.goit;
 
-import okhttp3.MediaType;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
+import okhttp3.*;
 import retrofit2.Call;
 import ua.goit.model.*;
 import ua.goit.repository.BaseRepository;
@@ -15,6 +13,7 @@ import ua.goit.util.RetrofitConfig;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     //private static final String BASE_URL = PropertiesLoader.getProperty("db.url");
@@ -22,34 +21,14 @@ public class Main {
     private static final BaseRepository petRepository = new PetRepository();
     private static final BaseRepository orderRepository = new OrderRepository();
     private static final BaseRepository userRepository = new UserRepository();
+    private static final Scanner scanner = new Scanner(System.in);
+    private final MenuHandler menuHandler = new MenuHandler();
 
     public static void main(String[] args) {
-        System.out.println(new StringBuilder()
-                .append("Select the query and print it with the parameters:\n")
-                // pet
-                .append("   post|pet|{petId}|uploadImage\n")
-                .append("   post|pet\n")
-                .append("   post|pet|{petId}\n")
-                .append("   put|pet\n")
-                .append("   get|pet|{petId}\n")
-                .append("   get|pet|findByStatus\n")
-                .append("   delete|pet|{petId}\n")
-                // store
-                .append("   get|store|inventory\n")
-                .append("   post|store|order\n")
-                .append("   get|store|order|{orderId}\n")
-                .append("   delete|store|order|{orderId}\n")
-                // user
-                .append("   post|user\n")
-                .append("   post|user|createWithArray\n")
-                .append("   post|user|createWithList\n")
-                .append("   get|user|{username}\n")
-                .append("   get|user|login\n")
-                .append("   get|user|logout\n")
-                .append("   put|user|{username}\n")
-                .append("   delete|user|{username}\n")
-        );
 
+        Main console = new Main();
+        console = console.mainMenu(console);
+        System.out.println("Application has been shut down");
         System.out.println("************************************");
 
         RetrofitClient retrofitClient = BaseConnect.getClient();
@@ -57,62 +36,70 @@ public class Main {
 //        Pet pet = RetrofitConfig.execute(retrofitClient.getPet(2));
 //        System.out.println(pet.toString());
 
-        // 1. POST
-        //
+        // 1. POST (https://petstore.swagger.io/v2/pet/1/uploadImage)
+//        Reflections reflections = new Reflections("resources", new ResourcesScanner());
+//        Set<String> resources = reflections.getResources(Pattern.compile(".*\\.ipg"));
+
+//        RequestBody file = RequestBody.create(MediaType.parse("image"),new File("dog2.jpg"));
+//        String addMetadata = "pet's image";
+
+//        File file = new File("dog2.jpg");
+//        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file","dog2.jpg", RequestBody.create(MediaType.parse("image"), file));
+//        MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata","photo Cat");
+//        ResponseBody response1 = RetrofitConfig.execute(retrofitClient.uploadPetImage(1, addMetadata, filePart));
 
         // 2. POST
         Pet newPet = (Pet) petRepository.createEntity(
                 new Pet(1,
-                new Category(1,"Cats"),
-                "cat tom",
-                new String[]{"http://pics.pets.ua/cat1.png","http://pics.pets.ua/cat2.png"},
-                new Tag[]{new Tag(1,"cat"),new Tag(2,"tom")},
-                "available"
-        ));
-        System.out.println("2. add Pet:\n"+newPet.toString());
+                        new Category(1, "Cats"),
+                        "cat tom",
+                        new String[]{"http://pics.pets.ua/cat1.png", "http://pics.pets.ua/cat2.png"},
+                        new Tag[]{new Tag(1, "cat"), new Tag(2, "tom")},
+                        "available"
+                ));
+        System.out.println("2. add Pet:\n" + newPet.toString());
 
         // 3. PUT
         Pet updatePet = (Pet) petRepository.updateEntity(
                 new Pet(1,
-                new Category(1, "Cats"),
-                "cat Tom",
-                new String[]{"http://pics.pets.ua/cat3.png", "http://pics.pets.ua/cat4.png"},
-                new Tag[]{new Tag(1, "cat"), new Tag(2, "Tom")},
-                "sold"
-        ));
-        System.out.println("3. update Pet:\n"+updatePet.toString());
+                        new Category(1, "Cats"),
+                        "cat Tom",
+                        new String[]{"http://pics.pets.ua/cat3.png", "http://pics.pets.ua/cat4.png"},
+                        new Tag[]{new Tag(1, "cat"), new Tag(2, "Tom")},
+                        "sold"
+                ));
+        System.out.println("3. update Pet:\n" + updatePet.toString());
 
         // ****** getByParam
         // 4. GET (https://petstore.swagger.io/v2/pet/findByStatus?status=available&status=sold)
         String[] statuses = {"available", "sold"};
         ResponseBody response = RetrofitConfig.execute(retrofitClient.getPetByStatus(statuses));
-        System.out.println("4. get Pet By Status:\n"+response.toString());
+        System.out.println("4. get Pet By Status:\n" + response.toString());
 
         // ****** updateEntity
         // 5. PUT (https://petstore.swagger.io/v2/pet/{petId})
 //        RequestBody nameCat = RequestBody.create(MediaType.parse("string"), "cat Tom1");
 //        RequestBody status = RequestBody.create(MediaType.parse("string"), "sold");
-//        petRepository.updateEntity()
 //        Call<Pet> petCall = retrofitClient.updatePetById(1, nameCat, status);
 //        Pet petById = RetrofitConfig.execute(petCall);
 //        System.out.println("5. add Pet By Id:\n"+petById.toString());
 
         Pet mouse = (Pet) petRepository.createEntity(
                 new Pet(2,
-                new Category(7,"mice"),
-                "mouse Jerry",
-                new String[]{"http://pics.pets.ua/mouse1.png","http://pics.pets.ua/mouse2.png"},
-                new Tag[]{new Tag(1,"mouse"),new Tag(2,"Jerry")},
-                "available"
-        ));
-        System.out.println("-. add Pet:\n"+mouse.toString());
+                        new Category(7, "mice"),
+                        "mouse Jerry",
+                        new String[]{"http://pics.pets.ua/mouse1.png", "http://pics.pets.ua/mouse2.png"},
+                        new Tag[]{new Tag(1, "mouse"), new Tag(2, "Jerry")},
+                        "available"
+                ));
+        System.out.println("-. add Pet:\n" + mouse.toString());
 
         Pet getPet = (Pet) petRepository.getEntity(1);
-        System.out.println("6.1 get Pet By Id:\n"+getPet.toString());
+        System.out.println("6.1 get Pet By Id:\n" + getPet.toString());
 
         // 6. DELETE
         ResponseBody body = petRepository.deleteEntity(2);
-        System.out.println("6.2 delete Pet By Id:\n"+body.toString());
+        System.out.println("6.2 delete Pet By Id:\n" + body.toString());
 
         // STORE
 
@@ -121,12 +108,12 @@ public class Main {
         Call callInventory = retrofitClient.getInventory();
         Object inventory = RetrofitConfig.execute(callInventory);
         //ResponseBody body = inventory.body();
-        System.out.println("7. get Inventory:\n"+inventory.toString());
+        System.out.println("7. get Inventory:\n" + inventory.toString());
 
         // 8. POST
         Order newOrder = (Order) orderRepository.createEntity(
                 new Order(4, 1, 1, "2021-09-01", "order", true));
-        System.out.println("8. add Order:\n"+newOrder.toString());
+        System.out.println("8. add Order:\n" + newOrder.toString());
 
         // 9. GET
         Order orderById = (Order) orderRepository.getEntity(4);
@@ -139,8 +126,8 @@ public class Main {
         // USER
         User user1 = new User(7, "Admin", "Ivan", "Iurko",
                 "ivan@mail.goit.com", "12345", "+38012345678", 1);
-        User user2 = new User(8, "Manager","Taras","Manevskij",
-                "taras@mail.goit.com","54321","+380117654321", 1);
+        User user2 = new User(8, "Manager", "Taras", "Manevskij",
+                "taras@mail.goit.com", "54321", "+380117654321", 1);
         User user3 = new User(7, "Director", "Anton", "Borenko",
                 "antin@mail.goit.com", "77777", "+380777777777", 1);
         List users = new ArrayList();
@@ -191,5 +178,94 @@ public class Main {
 //        Object responseUser = RetrofitConfig.execute(addUser);
         BaseEntity responseUser = userRepository.createEntity(user3);
         System.out.println("18. add User:\n" + responseUser.toString());
+    }
+
+    private Main mainMenu(Main console) {
+        String menuMain = new StringBuilder()
+                .append("Select the entity (number):\n")
+                .append("[1] Pet >>\n")
+                .append("[2] Store >>\n")
+                .append("[3] User >>\n")
+                .append("[4] < EXIT >\n")
+                .toString();
+        Integer selection = 0;
+        while (selection != 4) {
+            System.out.println(menuMain);
+            System.out.print("Insert selection: ");
+            selection = scanner.nextInt();
+            switch (selection) {
+                case 1: return console.menuPet(console);
+                case 2: return console.menuStore(console);
+                case 3: return console.menuUser(console);
+                case 4: return console;
+                default:
+                    System.out.println("The selection was invalid!");
+            }
+        }
+        return console;
+    }
+
+    private Main menuPet(Main console) {
+        String menuPet = new StringBuilder()
+                .append("Select the query and print it with the parameters:\n")
+                .append("   post|pet|{petId}|uploadImage\n")
+                .append("   post|pet\n")
+                .append("   post|pet|{petId}\n")
+                .append("   put|pet\n")
+                .append("   get|pet|{petId}\n")
+                .append("   get|pet|findByStatus\n")
+                .append("   delete|pet|{petId}\n")
+                .append("   exit")
+                .toString();
+        System.out.println(menuPet);
+        String selection = "";
+        while (!"exit".equals(selection)) {
+            selection = scanner.next();
+            String[] split = selection.split("\\|");
+            menuHandler.stringHandler(split);
+        }
+        return console;
+    }
+
+    private Main menuStore(Main console) {
+        String menuStore = new StringBuilder()
+                .append("   get|store|inventory\n")
+                .append("   post|store|order\n")
+                .append("   get|store|order|{orderId}\n")
+                .append("   delete|store|order|{orderId}\n")
+                .toString();
+        System.out.println(menuStore);
+        String selection = "";
+        while (!"exit".equals(selection)) {
+            selection = scanner.next();
+            String[] split = selection.split("\\|");
+            menuHandler.stringHandler(split);
+        }
+        return console;
+    }
+
+    private Main menuUser(Main console) {
+        String menuUser = new StringBuilder()
+                .append("   post|user\n")
+                .append("   post|user|createWithArray\n")
+                .append("   post|user|createWithList\n")
+                .append("   get|user|{username}\n")
+                .append("   get|user|login\n")
+                .append("   get|user|logout\n")
+                .append("   put|user|{username}\n")
+                .append("   delete|user|{username}\n")
+                .toString();
+        System.out.println(menuUser);
+        String selection = "";
+        while (!"exit".equals(selection)) {
+            selection = scanner.next();
+            String[] split = selection.split("\\|");
+            menuHandler.stringHandler(split);
+        }
+        return console;
+    }
+
+    private static String getMenu() {
+        return "";
     }
 }

@@ -31,8 +31,6 @@ public class PetRepository implements BaseRepository<Integer, Pet>{
     public ResponseBody deleteEntity(Integer id) {
         Call<ResponseBody> responseCall = retrofitClient.deletePetById(id);
         ResponseBody responseBody = RetrofitConfig.execute(responseCall);
-        //ResponseBody body = response.body();
-        //return RetrofitConfig.execute(retrofitClient.deletePetById(id)).body();
         return responseBody;
     }
 
@@ -41,8 +39,8 @@ public class PetRepository implements BaseRepository<Integer, Pet>{
 
     }
 
-    public ResponseBody getPetByStatus(String[] statuses){
-        return RetrofitConfig.execute(retrofitClient.getPetByStatus(statuses));
+    public ResponseBody getPetByStatus(String[] status){
+        return RetrofitConfig.execute(retrofitClient.getPetByStatus(status));
     }
 
 }

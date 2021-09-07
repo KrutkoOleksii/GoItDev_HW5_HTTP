@@ -1,9 +1,13 @@
 package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Data;
 
 import java.util.Arrays;
 
+@Data
+@Builder
 public class Pet implements BaseEntity<Integer>{
     @SerializedName("id")
     private Integer id;

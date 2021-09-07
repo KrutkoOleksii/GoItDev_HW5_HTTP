@@ -1,7 +1,11 @@
 package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
+import lombok.Builder;
+import lombok.Data;
 
+@Data
+@Builder
 public class User implements BaseEntity<String>{
     @SerializedName("id")
     private Integer id;
