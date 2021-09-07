@@ -14,7 +14,7 @@ public class HandlerPetPut extends HandlerMenu {
     protected void apply(String[] command) {
         BaseRepository<Integer, Pet> petRepository = new PetRepository();
         Pet updatePet = petRepository.updateEntity(getPetFromConsole());
-        System.out.println("3. update Pet:\n" + updatePet.toString());
+        System.out.println("update Pet:\n" + updatePet.toString());
     }
 
     @Override

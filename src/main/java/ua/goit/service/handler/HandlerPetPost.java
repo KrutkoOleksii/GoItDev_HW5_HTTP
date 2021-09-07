@@ -22,7 +22,7 @@ public class HandlerPetPost extends HandlerMenu {
 //                        new Tag[]{new Tag(1, "cat"), new Tag(2, "tom")},
 //                        "available"
 //                ));
-        System.out.println("2. add Pet:\n" + newPet.toString());
+        System.out.println("add Pet:\n" + newPet.toString());
     }
 
     @Override

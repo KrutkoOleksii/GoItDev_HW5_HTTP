@@ -12,8 +12,8 @@ public class HandlerPetGetById extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository petRepository = new PetRepository();
-        Pet getPet = (Pet) petRepository.getEntity(Integer.valueOf(command[2]));
+        BaseRepository<Integer, Pet> petRepository = new PetRepository();
+        Pet getPet = petRepository.getEntity(Integer.valueOf(command[2]));
         System.out.println("get Pet By Id:\n" + getPet.toString());
     }
 

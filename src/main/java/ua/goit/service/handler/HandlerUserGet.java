@@ -1,5 +1,9 @@
 package ua.goit.service.handler;
 
+import ua.goit.model.User;
+import ua.goit.repository.BaseRepository;
+import ua.goit.repository.UserRepository;
+
 public class HandlerUserGet extends HandlerMenu {
 
     public HandlerUserGet(HandlerMenu handler){
@@ -8,7 +12,9 @@ public class HandlerUserGet extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
+        BaseRepository<String, User> userRepository = new UserRepository();
+        User getUser = userRepository.getEntity(command[2]);
+        System.out.println("get User By User Name:\n" + getUser);
     }
 
     @Override

@@ -1,5 +1,9 @@
 package ua.goit.service.handler;
 
+import ua.goit.model.User;
+import ua.goit.repository.BaseRepository;
+import ua.goit.repository.UserRepository;
+
 public class HandlerUserPut extends HandlerMenu {
 
     public HandlerUserPut(HandlerMenu handler){
@@ -8,7 +12,9 @@ public class HandlerUserPut extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
+        BaseRepository<String, User> userRepository = new UserRepository();
+        User newUser = userRepository.updateEntity(getUserFromConsole());
+        System.out.println("update User By User Name:\n" + newUser.toString());
     }
 
     @Override

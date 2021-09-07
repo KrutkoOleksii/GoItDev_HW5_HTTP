@@ -1,5 +1,10 @@
 package ua.goit.service.handler;
 
+import okhttp3.ResponseBody;
+import ua.goit.model.Order;
+import ua.goit.repository.BaseRepository;
+import ua.goit.repository.OrderRepository;
+
 public class HandlerStoreDelete extends HandlerMenu {
 
     public HandlerStoreDelete(HandlerMenu handler){
@@ -8,7 +13,9 @@ public class HandlerStoreDelete extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
+        BaseRepository<Integer, Order> orderRepository = new OrderRepository();
+        ResponseBody deletedOrder = orderRepository.deleteEntity(Integer.valueOf(command[3]));
+        System.out.println("delete Order By Id:\n" + deletedOrder);
     }
 
     @Override
