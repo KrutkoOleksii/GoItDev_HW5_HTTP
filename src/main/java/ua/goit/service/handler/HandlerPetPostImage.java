@@ -1,5 +1,15 @@
 package ua.goit.service.handler;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
+import okhttp3.ResponseBody;
+import ua.goit.service.RetrofitClient;
+import ua.goit.util.BaseConnect;
+import ua.goit.util.RetrofitConfig;
+
+import java.io.File;
+
 public class HandlerPetPostImage extends HandlerMenu {
 
     public HandlerPetPostImage(HandlerMenu handler){
@@ -9,11 +19,22 @@ public class HandlerPetPostImage extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         //TODO
+//        Reflections reflections = new Reflections("resources", new ResourcesScanner());
+//        Set<String> resources = reflections.getResources(Pattern.compile(".*\\.ipg"));
+//        RequestBody file = RequestBody.create(MediaType.parse("image"),new File("dog2.jpg"));
+//        String addMetadata = "pet's image";
+        RetrofitClient retrofitClient = BaseConnect.getClient();
+        File file = new File("dog2.jpg");
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file","dog2.jpg", RequestBody.create(MediaType.parse("image"), file));
+        System.out.println("please enter additional metadata for image");
+        MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", scanner.next());
+        RetrofitConfig.execute(retrofitClient.uploadPetImage(Long.valueOf(command[2]), addMetadata, filePart));
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==4 & "post".equals(command[0]) & "pet".equals(command[1]);
+        if (command.length==4) return  "post".equals(command[0]) & "pet".equals(command[1]);
+        return false;
     }
 
 }

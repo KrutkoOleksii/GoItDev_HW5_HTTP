@@ -19,7 +19,8 @@ public class HandlerUserPut extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==3 & "put".equals(command[0]) & "user".equals(command[1]);
+        if (command.length==3) return "put".equals(command[0]) & "user".equals(command[1]);
+        return false;
     }
 
 }

@@ -22,7 +22,8 @@ public class HandlerStoreGetInventory extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==3 & "get".equals(command[0]) & "store".equals(command[1]) & "inventory".equals(command[2]);
+        if (command.length==3) return "get".equals(command[0]) & "store".equals(command[1]) & "inventory".equals(command[2]);
+        return false;
     }
 
 }

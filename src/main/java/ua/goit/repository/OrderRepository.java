@@ -6,7 +6,7 @@ import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 
-public class OrderRepository implements BaseRepository<Integer, Order>{
+public class OrderRepository implements BaseRepository<Long, Order>{
 
     RetrofitClient retrofitClient = BaseConnect.getClient();
 
@@ -21,12 +21,12 @@ public class OrderRepository implements BaseRepository<Integer, Order>{
     }
 
     @Override
-    public Order getEntity(Integer id) {
+    public Order getEntity(Long id) {
         return RetrofitConfig.execute(retrofitClient.getOrderById(id));
     }
 
     @Override
-    public ResponseBody deleteEntity(Integer id) {
+    public ResponseBody deleteEntity(Long id) {
         return null;
     }
 

@@ -12,14 +12,15 @@ public class HandlerPetGetById extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Integer, Pet> petRepository = new PetRepository();
-        Pet getPet = petRepository.getEntity(Integer.valueOf(command[2]));
+        BaseRepository<Long, Pet> petRepository = new PetRepository();
+        Pet getPet = petRepository.getEntity(Long.valueOf(command[2]));
         System.out.println("get Pet By Id:\n" + getPet.toString());
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==3 & "get".equals(command[0]) & "pet".equals(command[1]);
+        if (command.length==3) return "get".equals(command[0]) & "pet".equals(command[1]) & !"findByStatus".equals(command[2]);
+        return false;
     }
 
 }

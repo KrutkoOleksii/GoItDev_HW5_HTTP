@@ -6,11 +6,11 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Order implements BaseEntity<Integer>{
+public class Order implements BaseEntity<Long>{
     @SerializedName("id")
-    private Integer id;
+    private Long id;
     @SerializedName("petId")
-    private Integer petId;
+    private Long petId;
     @SerializedName("quantity")
     private Integer quantity;
     @SerializedName("shipDate")
@@ -20,7 +20,7 @@ public class Order implements BaseEntity<Integer>{
     @SerializedName("complete")
     private Boolean complete;
 
-    public Order(Integer id, Integer petId, Integer quantity, String shipDate, String status, Boolean complete) {
+    public Order(Long id, Long petId, Integer quantity, String shipDate, String status, Boolean complete) {
         this.id = id;
         this.petId = petId;
         this.quantity = quantity;
@@ -30,7 +30,7 @@ public class Order implements BaseEntity<Integer>{
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

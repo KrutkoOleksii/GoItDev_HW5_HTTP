@@ -12,7 +12,7 @@ public class HandlerPetPost extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Integer, Pet> petRepository = new PetRepository();
+        BaseRepository<Long, Pet> petRepository = new PetRepository();
         Pet newPet = petRepository.createEntity(getPetFromConsole());
 //        Pet newPet = (Pet) petRepository.createEntity(
 //                new Pet(1,
@@ -27,7 +27,8 @@ public class HandlerPetPost extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==2 & "post".equals(command[0]) & "pet".equals(command[1]);
+        if (command.length==2) return "post".equals(command[0]) & "pet".equals(command[1]);
+        return false;
     }
 
 }

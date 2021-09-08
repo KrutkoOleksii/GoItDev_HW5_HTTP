@@ -2,9 +2,9 @@ package ua.goit.service;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.Response;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.*;
 import ua.goit.model.*;
 
@@ -16,7 +16,7 @@ public interface RetrofitClient {
     @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
     //Call<ResponseBody> uploadPetImage(@Path("petId") Integer id, @Part("additionalMetadata") String additionalMetadata, @Part("file") RequestBody image);
-    Call<ResponseBody> uploadPetImage(@Path("petId") Integer id, @Part MultipartBody.Part additionalMetadata, @Part MultipartBody.Part filePart);
+    Call<ResponseBody> uploadPetImage(@Path("petId") Long id, @Part MultipartBody.Part additionalMetadata, @Part MultipartBody.Part filePart);
 
     @POST("pet")
     @Headers({"Content-Type: application/json"})
@@ -28,20 +28,20 @@ public interface RetrofitClient {
 
     @GET("pet/findByStatus")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> getPetByStatus(@Query("status") String[] status);
+    Call<List<Pet>> getPetByStatus(@Query("status") String[] status);
 
     @GET("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> getPet(@Path("petId") Integer id);
+    Call<Pet> getPet(@Path("petId") Long id);
 
     @Multipart
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<Pet> updatePetById(@Path("petId") Integer id, @Part("name") RequestBody name, @Part("status") RequestBody status);
+    Call<Pet> updatePetById(@Path("petId") Long id, @Part("name") RequestBody name, @Part("status") RequestBody status);
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> deletePetById(@Path("petId") Integer id);
+    Call<ResponseBody> deletePetById(@Path("petId") Long id);
 
     // STORE
     @GET("store/inventory")
@@ -54,11 +54,11 @@ public interface RetrofitClient {
 
     @GET("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Order> getOrderById(@Path("orderId") Integer orderId);
+    Call<Order> getOrderById(@Path("orderId") Long orderId);
 
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> deleteOrderById(@Path("orderId") Integer orderId);
+    Call<ResponseBody> deleteOrderById(@Path("orderId") Long orderId);
 
     // USER
     @POST("user/createWithList")

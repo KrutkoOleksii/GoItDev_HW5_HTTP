@@ -12,14 +12,15 @@ public class HandlerStoreGet extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Integer, Order> orderRepository = new OrderRepository();
-        Order orderById = orderRepository.getEntity(Integer.valueOf(command[3]));
+        BaseRepository<Long, Order> orderRepository = new OrderRepository();
+        Order orderById = orderRepository.getEntity(Long.valueOf(command[3]));
         System.out.println("get Order By Id:\n" + orderById.toString());
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==4 & "get".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        if (command.length==4) return "get".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        return false;
     }
 
 }

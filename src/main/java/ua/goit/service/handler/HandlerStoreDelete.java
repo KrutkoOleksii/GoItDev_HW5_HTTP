@@ -13,14 +13,15 @@ public class HandlerStoreDelete extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Integer, Order> orderRepository = new OrderRepository();
-        ResponseBody deletedOrder = orderRepository.deleteEntity(Integer.valueOf(command[3]));
+        BaseRepository<Long, Order> orderRepository = new OrderRepository();
+        ResponseBody deletedOrder = orderRepository.deleteEntity(Long.valueOf(command[3]));
         System.out.println("delete Order By Id:\n" + deletedOrder);
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==4 & "delete".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        if (command.length==4) return "delete".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        return false;
     }
 
 }

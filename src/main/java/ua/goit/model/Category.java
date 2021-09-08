@@ -2,23 +2,23 @@ package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Category implements BaseEntity<Integer> {
+public class Category implements BaseEntity<Long> {
     @SerializedName("id")
-    private Integer id;
+    private Long id;
     @SerializedName("name")
     private String name;
 
-    public Category(Integer id, String name) {
+    public Category(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
     public Category() {
-        new Category(0, "out of categories");
+        new Category(0L, "out of categories");
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

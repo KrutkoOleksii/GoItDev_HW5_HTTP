@@ -8,9 +8,9 @@ import java.util.Arrays;
 
 @Data
 @Builder
-public class Pet implements BaseEntity<Integer>{
+public class Pet implements BaseEntity<Long>{
     @SerializedName("id")
-    private Integer id;
+    private Long id;
     @SerializedName("category")
     private Category category;
     @SerializedName("name")
@@ -22,7 +22,7 @@ public class Pet implements BaseEntity<Integer>{
     @SerializedName("status")
     private String status;
 
-    public Pet(Integer id, Category category, String name, String[] photoUrls, Tag[] tags, String status) {
+    public Pet(Long id, Category category, String name, String[] photoUrls, Tag[] tags, String status) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -35,7 +35,7 @@ public class Pet implements BaseEntity<Integer>{
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

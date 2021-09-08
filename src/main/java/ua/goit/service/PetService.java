@@ -3,7 +3,6 @@ package ua.goit.service;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import retrofit2.Response;
 import ua.goit.model.Category;
 import ua.goit.model.Pet;
@@ -13,11 +12,12 @@ import ua.goit.repository.PetRepository;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class PetService {
 
-    private final BaseRepository petRepository = new PetRepository();
+    private final BaseRepository<Long,Pet> petRepository = new PetRepository();
     private final Scanner scanner = new Scanner(System.in);
     private final RetrofitClient retrofitClient = BaseConnect.getClient();
 
@@ -31,7 +31,7 @@ public class PetService {
         return newPet;
     }
 
-    public ResponseBody getPetsByStatus(){
+    public List<Pet> getPetsByStatus(){
         System.out.println("please enter the statuses of pets separated by commas:\n {status1},{status2}, ... {statusN}");
         String stringStatuses = scanner.next();
         String[] statuses = stringStatuses.split(",");
@@ -44,19 +44,19 @@ public class PetService {
         String[] split = paramsPet.split(",");
         RequestBody namePet = RequestBody.create(MediaType.parse("string"), split[1]);
         RequestBody status = RequestBody.create(MediaType.parse("string"),  split[2]);
-        return RetrofitConfig.execute(retrofitClient.updatePetById(Integer.valueOf(split[0]), namePet, status));
+        return RetrofitConfig.execute(retrofitClient.updatePetById(Long.valueOf(split[0]), namePet, status));
     }
 
     public Pet getPet() {
         System.out.println("please enter id:");
         String id = scanner.next();
-        return (Pet) petRepository.getEntity(id);
+        return (Pet) petRepository.getEntity(Long.parseLong(id));
     }
 
     public void deletePet() {
         System.out.println("please enter id:");
         String id = scanner.next();
-        ResponseBody responseBody = petRepository.deleteEntity(id);
+        ResponseBody responseBody = petRepository.deleteEntity(Long.parseLong(id));
     }
 
     public Pet inputNewPet(){
@@ -64,11 +64,11 @@ public class PetService {
         String paramsPet = scanner.next();
         String[] split = paramsPet.split(",");
         return Pet.builder()
-                .id(Integer.valueOf(split[0]))
+                .id(Long.valueOf(split[0]))
                 .name(split[1])
                 .status(split[2])
-                .category(new Category(0, split[3]))
-                .tags(new Tag[]{new Tag(0, split[4])})
+                .category(new Category(0L, split[3]))
+                .tags(new Tag[]{new Tag(0L, split[4])})
                 .build();
     }
 

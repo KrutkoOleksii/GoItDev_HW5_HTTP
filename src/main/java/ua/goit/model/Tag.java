@@ -2,19 +2,19 @@ package ua.goit.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Tag implements BaseEntity<Integer> {
+public class Tag implements BaseEntity<Long> {
     @SerializedName("id")
-    private Integer id;
+    private Long id;
     @SerializedName("name")
     private String name;
 
-    public Tag(Integer id, String name) {
+    public Tag(Long id, String name) {
         this.id = id;
         this.name = name;
     }
 
     @Override
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

@@ -13,13 +13,14 @@ public class HandlerPetDelete extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseRepository petRepository = new PetRepository();
-        ResponseBody body = petRepository.deleteEntity(Integer.valueOf(command[2]));
+        ResponseBody body = petRepository.deleteEntity(Long.valueOf(command[2]));
         System.out.println("delete Pet By Id:\n" + body.toString());
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==3 & "post".equals(command[0]) & "delete".equals(command[1]);
+        if (command.length==3) return  "post".equals(command[0]) & "delete".equals(command[1]);
+        return false;
     }
 
 }

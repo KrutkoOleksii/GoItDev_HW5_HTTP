@@ -1,9 +1,12 @@
 package ua.goit.service.handler;
 
-import okhttp3.ResponseBody;
+import retrofit2.Response;
+import ua.goit.model.Pet;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
+
+import java.util.List;
 
 public class HandlerPetGetByStatus extends HandlerMenu {
 
@@ -18,13 +21,14 @@ public class HandlerPetGetByStatus extends HandlerMenu {
         String[] status = {scanner.next(), scanner.next()};
 
         RetrofitClient retrofitClient = BaseConnect.getClient();
-        ResponseBody response = RetrofitConfig.execute(retrofitClient.getPetByStatus(status));
+        List<Pet> response = RetrofitConfig.execute(retrofitClient.getPetByStatus(status));
         System.out.println("get Pet By Status:\n" + response.toString());
     }
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return command.length==3 & "get".equals(command[0]) & "pet".equals(command[1]) & "findByStatus".equals(command[2]);
+        if (command.length==3) return  "get".equals(command[0]) & "pet".equals(command[1]) & "findByStatus".equals(command[2]);
+        return false;
     }
 
 }

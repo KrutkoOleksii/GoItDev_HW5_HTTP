@@ -36,15 +36,15 @@ public abstract class HandlerMenu {
 
     protected Pet getPetFromConsole() {
         System.out.println("enter the parameters of the new pet:\n" +
-                "{id} | {name} | {status} | {category}\n" +
-                "( e.g.  2 | Barbos | available | dogs )");
+                "{id}|{name}|{status}|{category}\n" +
+                "( e.g.  2|Barbos|available|dogs)");
         String next = scanner.next();
         String[] split = next.split("\\|");
         return Pet.builder()
-                .id(Integer.valueOf(split[0]))
+                .id(Long.valueOf(split[0]))
                 .name(split[1])
                 .status(split[2])
-                .category(new Category(11,split[3]))
+                .category(new Category(11L,split[3]))
                 .build();
     }
 
@@ -55,8 +55,8 @@ public abstract class HandlerMenu {
         String next = scanner.next();
         String[] split = next.split("\\|");
         return Order.builder()
-                .id(Integer.valueOf(split[0]))
-                .petId(Integer.valueOf(split[1]))
+                .id(Long.valueOf(split[0]))
+                .petId(Long.valueOf(split[1]))
                 .quantity(Integer.valueOf(split[2]))
                 .shipDate(split[3])
                 .status(split[4])
@@ -71,7 +71,7 @@ public abstract class HandlerMenu {
         String next = scanner.next();
         String[] split = next.split("\\|");
         return User.builder()
-                .id(Integer.valueOf(split[0]))
+                .id(Long.valueOf(split[0]))
                 .username(split[1])
                 .firstName(split[2])
                 .lastName(split[3])

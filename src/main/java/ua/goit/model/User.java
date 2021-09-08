@@ -8,7 +8,7 @@ import lombok.Data;
 @Builder
 public class User implements BaseEntity<String>{
     @SerializedName("id")
-    private Integer id;
+    private Long id;
     @SerializedName("username")
     private String username;
     @SerializedName("firstName")
@@ -24,7 +24,7 @@ public class User implements BaseEntity<String>{
     @SerializedName("userStatus")
     private Integer userStatus;
 
-    public User(Integer id, String username, String firstName, String lastName, String email, String password, String phone, Integer userStatus) {
+    public User(Long id, String username, String firstName, String lastName, String email, String password, String phone, Integer userStatus) {
         this.id = id;
         this.username = username;
         this.firstName = firstName;
