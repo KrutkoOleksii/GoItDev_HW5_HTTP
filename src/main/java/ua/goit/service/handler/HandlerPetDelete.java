@@ -1,6 +1,7 @@
 package ua.goit.service.handler;
 
 import okhttp3.ResponseBody;
+import ua.goit.model.Pet;
 import ua.goit.repository.BaseRepository;
 import ua.goit.repository.PetRepository;
 
@@ -12,7 +13,7 @@ public class HandlerPetDelete extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository petRepository = new PetRepository();
+        BaseRepository<Long, Pet> petRepository = new PetRepository();
         ResponseBody body = petRepository.deleteEntity(Long.valueOf(command[2]));
         System.out.println("delete Pet By Id:\n" + body.toString());
     }

@@ -2,7 +2,6 @@ package ua.goit.repository;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import ua.goit.model.Pet;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
@@ -34,11 +33,6 @@ public class PetRepository implements BaseRepository<Long, Pet>{
         Call<ResponseBody> responseCall = retrofitClient.deletePetById(id);
         ResponseBody responseBody = RetrofitConfig.execute(responseCall);
         return responseBody;
-    }
-
-    @Override
-    public void saveAll(Iterable itrbl) {
-
     }
 
     public List<Pet> getPetByStatus(String[] status){

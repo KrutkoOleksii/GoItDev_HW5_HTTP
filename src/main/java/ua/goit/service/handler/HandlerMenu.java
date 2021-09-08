@@ -31,7 +31,7 @@ public abstract class HandlerMenu {
                 new HandlerStoreGetInventory(new HandlerStorePost(new HandlerUserDelete(
                 new HandlerUserGet(new HandlerUserGetLogin(new HandlerUserGetLogout(
                 new HandlerUserPostArray(new HandlerUserPostList(new HandlerUserPut(
-                new HandlerException()))))))))))))))))));
+                new HandlerUserPost(new HandlerException())))))))))))))))))));
     }
 
     protected Pet getPetFromConsole() {
@@ -44,14 +44,14 @@ public abstract class HandlerMenu {
                 .id(Long.valueOf(split[0]))
                 .name(split[1])
                 .status(split[2])
-                .category(new Category(11L,split[3]))
+                .category(new Category(0L,split[3]))
                 .build();
     }
 
     protected Order getOrderFromConsole() {
         System.out.println("enter the parameters of the new order:\n" +
-                "{id} | {petId} | {quantity} | {shipDate} | {status}| {complete}\n" +
-                "( e.g.  2 | 1 | 30 | 2021-09-09 | placed | true )");
+                "{id}|{petId}|{quantity}|{shipDate}|{status}|{complete}\n" +
+                "( e.g.  2|1|30|2021-09-09|placed|true)");
         String next = scanner.next();
         String[] split = next.split("\\|");
         return Order.builder()

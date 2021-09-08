@@ -21,11 +21,10 @@ public class HandlerUserPostList extends HandlerMenu {
         List<User> users = new ArrayList();
         users.add(getUserFromConsole());
         users.add(getUserFromConsole());
-
         RetrofitClient retrofitClient = BaseConnect.getClient();
-        Call userWithList = retrofitClient.createUserWithList(users);
-        Object responseUserList = RetrofitConfig.execute(userWithList);
-        System.out.println("11. create User With List:\n" + responseUserList);
+        Call<List<User>> userWithList = retrofitClient.createUserWithList(users);
+        List<User> userList = RetrofitConfig.execute(userWithList);
+        System.out.println("create User With List:\n" + userList.toString());
     }
 
     @Override

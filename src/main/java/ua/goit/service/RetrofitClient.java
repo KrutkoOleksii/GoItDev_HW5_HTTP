@@ -9,6 +9,7 @@ import retrofit2.http.*;
 import ua.goit.model.*;
 
 import java.util.List;
+import java.util.Map;
 
 public interface RetrofitClient {
 
@@ -46,7 +47,7 @@ public interface RetrofitClient {
     // STORE
     @GET("store/inventory")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> getInventory();
+    Call<Map<String,Integer>> getInventory();
 
     @POST("store/order")
     @Headers({"Content-Type: application/json"})
@@ -63,7 +64,7 @@ public interface RetrofitClient {
     // USER
     @POST("user/createWithList")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> createUserWithList(@Body List<User> users);
+    Call<List<User>> createUserWithList(@Body List<User> users);
 
     @GET("user/{userName}")
     @Headers({"Content-Type: application/json"})
@@ -87,18 +88,10 @@ public interface RetrofitClient {
 
     @POST("user/createWithArray")
     @Headers({"Content-Type: application/json"})
-    Call<ResponseBody> createUserWithArray(@Body User[] users);
+    Call<List<User>> createUserWithArray(@Body User[] users);
 
     @POST("user")
     @Headers({"Content-Type: application/json"})
     Call<User>  addUser(@Body User user);
-
-//    @GET("users")
-//    @Headers({"Content-Type: application/json"})
-//    Call<List<User>> getUserByID(@Query("id") Integer id);
-//
-//    @GET("users")
-//    @Headers({"Content-Type: application/json"})
-//    Call<List<User>> getUserByUserName(@Query("username") String userName);
 
 }

@@ -30,8 +30,4 @@ public class OrderRepository implements BaseRepository<Long, Order>{
         return null;
     }
 
-    @Override
-    public void saveAll(Iterable itrbl) {
-
-    }
 }

@@ -13,7 +13,5 @@ public interface BaseRepository <ID, E extends BaseEntity<ID>>{
 
     ResponseBody deleteEntity(ID id); // DELETE
 
-    void saveAll(Iterable itrbl); // POST
-
 
 }

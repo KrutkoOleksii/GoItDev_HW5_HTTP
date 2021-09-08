@@ -1,8 +1,6 @@
 package ua.goit.repository;
 
-import okhttp3.Response;
 import okhttp3.ResponseBody;
-import retrofit2.Call;
 import ua.goit.model.User;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
@@ -14,7 +12,7 @@ public class UserRepository implements BaseRepository<String, User>{
 
     @Override
     public User createEntity(User user) {
-        return null;
+        return RetrofitConfig.execute(retrofitClient.addUser(user));
     }
 
     @Override
@@ -24,7 +22,7 @@ public class UserRepository implements BaseRepository<String, User>{
 
     @Override
     public User getEntity(String username) {
-        return null;
+        return RetrofitConfig.execute(retrofitClient.getUserByUserName(username));
     }
 
     @Override
@@ -32,8 +30,4 @@ public class UserRepository implements BaseRepository<String, User>{
         return RetrofitConfig.execute(retrofitClient.deleteUserById(username));
     }
 
-    @Override
-    public void saveAll(Iterable itrbl) {
-
-    }
 }

@@ -6,6 +6,8 @@ import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 
+import java.util.List;
+
 public class HandlerUserPostArray extends HandlerMenu {
 
     public HandlerUserPostArray(HandlerMenu handler){
@@ -16,11 +18,10 @@ public class HandlerUserPostArray extends HandlerMenu {
     protected void apply(String[] command) {
         //TODO
         User[] usersArray = {getUserFromConsole(), getUserFromConsole()};
-
         RetrofitClient retrofitClient = BaseConnect.getClient();
-        Call usersWithArray = retrofitClient.createUserWithArray(usersArray);
-        Object execute = RetrofitConfig.execute(usersWithArray);
-        System.out.println("create User With Array:\n" + execute.toString());
+        Call<List<User>> usersWithArray = retrofitClient.createUserWithArray(usersArray);
+        List<User> userList = RetrofitConfig.execute(usersWithArray);
+        System.out.println("create User With Array:\n" + userList.toString());
     }
 
     @Override

@@ -25,8 +25,4 @@ public abstract class BaseRepositoryImpl <ID,E extends BaseEntity<ID>> implement
         return null;
     }
 
-    @Override
-    public void saveAll(Iterable itrbl) {
-
-    }
 }

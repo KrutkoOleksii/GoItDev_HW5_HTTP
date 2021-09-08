@@ -14,14 +14,6 @@ public class HandlerPetPost extends HandlerMenu {
     protected void apply(String[] command) {
         BaseRepository<Long, Pet> petRepository = new PetRepository();
         Pet newPet = petRepository.createEntity(getPetFromConsole());
-//        Pet newPet = (Pet) petRepository.createEntity(
-//                new Pet(1,
-//                        new Category(1, "Cats"),
-//                        "cat tom",
-//                        new String[]{"http://pics.pets.ua/cat1.png", "http://pics.pets.ua/cat2.png"},
-//                        new Tag[]{new Tag(1, "cat"), new Tag(2, "tom")},
-//                        "available"
-//                ));
         System.out.println("add Pet:\n" + newPet.toString());
     }
 

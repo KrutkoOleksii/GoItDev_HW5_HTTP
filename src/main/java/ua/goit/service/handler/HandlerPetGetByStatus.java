@@ -1,6 +1,5 @@
 package ua.goit.service.handler;
 
-import retrofit2.Response;
 import ua.goit.model.Pet;
 import ua.goit.service.RetrofitClient;
 import ua.goit.util.BaseConnect;
