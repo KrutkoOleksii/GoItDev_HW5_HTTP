@@ -19,7 +19,7 @@ public class HandlerPetDelete extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "post".equals(command[0]) & "delete".equals(command[1]);
+        return command.length==3 & "post".equals(command[0]) & "delete".equals(command[1]);
     }
 
 }

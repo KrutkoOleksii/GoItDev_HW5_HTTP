@@ -20,7 +20,7 @@ public class HandlerStoreDelete extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "delete".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        return command.length==4 & "delete".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
     }
 
 }

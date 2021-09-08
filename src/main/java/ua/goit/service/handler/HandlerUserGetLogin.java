@@ -28,7 +28,7 @@ public class HandlerUserGetLogin extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "get".equals(command[0]) & "user".equals(command[1])
+        return command.length==3 & "get".equals(command[0]) & "user".equals(command[1])
                 & "login".equals(command[2]);
     }
 

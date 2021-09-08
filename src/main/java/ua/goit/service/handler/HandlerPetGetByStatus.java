@@ -24,7 +24,7 @@ public class HandlerPetGetByStatus extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "get".equals(command[0]) & "pet".equals(command[1]) & "findByStatus".equals(command[2]);
+        return command.length==3 & "get".equals(command[0]) & "pet".equals(command[1]) & "findByStatus".equals(command[2]);
     }
 
 }

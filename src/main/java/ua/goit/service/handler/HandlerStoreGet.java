@@ -19,7 +19,7 @@ public class HandlerStoreGet extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "get".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
+        return command.length==4 & "get".equals(command[0]) & "store".equals(command[1]) & "order".equals(command[2]);
     }
 
 }

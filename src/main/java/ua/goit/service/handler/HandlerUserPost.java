@@ -20,8 +20,7 @@ public class HandlerUserPost extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "post".equals(command[0]) & "user".equals(command[1])
-                & !"createWithList".equals(command[2]) & !"createWithArray".equals(command[2]);
+        return command.length==2 & "post".equals(command[0]) & "user".equals(command[1]);
     }
 
 }

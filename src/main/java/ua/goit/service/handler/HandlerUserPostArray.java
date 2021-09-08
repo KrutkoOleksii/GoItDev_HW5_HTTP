@@ -25,7 +25,7 @@ public class HandlerUserPostArray extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        return "post".equals(command[0]) & "user".equals(command[1])
+        return command.length==3 & "post".equals(command[0]) & "user".equals(command[1])
                 & "createWithArray".equals(command[2]);
     }
 
