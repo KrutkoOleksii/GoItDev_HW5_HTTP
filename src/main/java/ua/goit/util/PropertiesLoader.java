@@ -24,7 +24,6 @@ public class PropertiesLoader {
 
     public static InputStream getInputStream(String fileName) {
         return PropertiesLoader.class.getClassLoader().getResourceAsStream(fileName);
-        // return PropertiesLoader.class.getClassLoader().getResourceAsStream(propertiesFileName);
     }
 
 }
