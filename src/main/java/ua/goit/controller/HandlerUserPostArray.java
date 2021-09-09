@@ -2,8 +2,8 @@ package ua.goit.controller;
 
 import retrofit2.Call;
 import ua.goit.model.User;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientUser;
+import ua.goit.util.BaseConnectUser;
 import ua.goit.util.RetrofitConfig;
 
 import java.util.List;
@@ -18,7 +18,7 @@ public class HandlerUserPostArray extends HandlerMenu {
     protected void apply(String[] command) {
         //TODO
         User[] usersArray = {getUserFromConsole(), getUserFromConsole()};
-        RetrofitClient retrofitClient = BaseConnect.getClient();
+        RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
         Call<List<User>> usersWithArray = retrofitClient.createUserWithArray(usersArray);
         List<User> userList = RetrofitConfig.execute(usersWithArray);
         System.out.println("create User With Array:\n" + userList.toString());

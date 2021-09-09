@@ -1,18 +1,17 @@
 package ua.goit.service;
 
-import okhttp3.ResponseBody;
 import ua.goit.model.Order;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientStore;
+import ua.goit.util.BaseConnectStore;
 import ua.goit.util.RetrofitConfig;
 
 public class OrderService implements BaseService<Long, Order> {
 
-    RetrofitClient retrofitClient = BaseConnect.getClient();
+    RetrofitClientStore retrofitClient = BaseConnectStore.getClient();
 
     @Override
     public Order createEntity(Order order) {
-        return RetrofitConfig.execute(retrofitClient.addOrder(order));
+        return RetrofitConfig.execute(retrofitClient.addEntity(order));
     }
 
     @Override
@@ -22,12 +21,12 @@ public class OrderService implements BaseService<Long, Order> {
 
     @Override
     public Order getEntity(Long id) {
-        return RetrofitConfig.execute(retrofitClient.getOrderById(id));
+        return RetrofitConfig.execute(retrofitClient.getEntity(id));
     }
 
     @Override
-    public ResponseBody deleteEntity(Long id) {
-        return null;
+    public Order deleteEntity(Long id) {
+        return RetrofitConfig.execute(retrofitClient.deleteEntity(id));
     }
 
 }

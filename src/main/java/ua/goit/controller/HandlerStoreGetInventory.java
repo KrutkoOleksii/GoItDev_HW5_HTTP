@@ -1,8 +1,8 @@
 package ua.goit.controller;
 
 import retrofit2.Call;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientStore;
+import ua.goit.util.BaseConnectStore;
 import ua.goit.util.RetrofitConfig;
 
 import java.util.Map;
@@ -16,7 +16,7 @@ public class HandlerStoreGetInventory extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         //TODO
-        RetrofitClient retrofitClient = BaseConnect.getClient();
+        RetrofitClientStore retrofitClient = BaseConnectStore.getClient();
         Call<Map<String, Integer>> callInventory = retrofitClient.getInventory();
         Map<String,Integer> inventory = RetrofitConfig.execute(callInventory);
         System.out.println("get Inventory:\n" + inventory.toString());

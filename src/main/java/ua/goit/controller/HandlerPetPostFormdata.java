@@ -4,8 +4,8 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import ua.goit.model.Pet;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientPet;
+import ua.goit.util.BaseConnectPet;
 import ua.goit.util.RetrofitConfig;
 
 public class HandlerPetPostFormdata extends HandlerMenu {
@@ -17,7 +17,7 @@ public class HandlerPetPostFormdata extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         //TODO
-        RetrofitClient retrofitClient = BaseConnect.getClient();
+        RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
         System.out.println("please enter name of pet:");
         RequestBody nameCat = RequestBody.create(MediaType.parse("string"), scanner.next());
         System.out.println("please enter pet status:");

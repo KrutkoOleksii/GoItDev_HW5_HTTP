@@ -1,6 +1,5 @@
 package ua.goit.service;
 
-import okhttp3.ResponseBody;
 import ua.goit.model.BaseEntity;
 
 public abstract class BaseServiceImpl<ID,E extends BaseEntity<ID>> implements BaseService<ID,E> {
@@ -21,7 +20,7 @@ public abstract class BaseServiceImpl<ID,E extends BaseEntity<ID>> implements Ba
     }
 
     @Override
-    public ResponseBody deleteEntity(ID id) {
+    public E deleteEntity(ID id) {
         return null;
     }
 

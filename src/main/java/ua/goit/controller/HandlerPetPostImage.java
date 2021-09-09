@@ -4,8 +4,10 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientPet;
+import ua.goit.service.retrofit.RetrofitClientUser;
+import ua.goit.util.BaseConnectPet;
+import ua.goit.util.BaseConnectUser;
 import ua.goit.util.RetrofitConfig;
 
 import java.io.File;
@@ -23,7 +25,7 @@ public class HandlerPetPostImage extends HandlerMenu {
 //        Set<String> resources = reflections.getResources(Pattern.compile(".*\\.ipg"));
 //        RequestBody file = RequestBody.create(MediaType.parse("image"),new File("dog2.jpg"));
 //        String addMetadata = "pet's image";
-        RetrofitClient retrofitClient = BaseConnect.getClient();
+        RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
         System.out.println("enter the path of image with pet");
         File file = new File(scanner.next());
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("file","dog1.jpg", RequestBody.create(MediaType.parse("image"), file));

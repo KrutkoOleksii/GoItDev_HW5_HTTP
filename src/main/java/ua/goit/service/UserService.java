@@ -1,18 +1,17 @@
 package ua.goit.service;
 
-import okhttp3.ResponseBody;
 import ua.goit.model.User;
-import ua.goit.service.retrofit.RetrofitClient;
-import ua.goit.util.BaseConnect;
+import ua.goit.service.retrofit.RetrofitClientUser;
+import ua.goit.util.BaseConnectUser;
 import ua.goit.util.RetrofitConfig;
 
 public class UserService implements BaseService<String, User> {
 
-    RetrofitClient retrofitClient = BaseConnect.getClient();
+    RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
 
     @Override
     public User createEntity(User user) {
-        return RetrofitConfig.execute(retrofitClient.addUser(user));
+        return RetrofitConfig.execute(retrofitClient.addEntity(user));
     }
 
     @Override
@@ -22,12 +21,12 @@ public class UserService implements BaseService<String, User> {
 
     @Override
     public User getEntity(String username) {
-        return RetrofitConfig.execute(retrofitClient.getUserByUserName(username));
+        return RetrofitConfig.execute(retrofitClient.getEntity(username));
     }
 
     @Override
-    public ResponseBody deleteEntity(String username) {
-        return RetrofitConfig.execute(retrofitClient.deleteUserById(username));
+    public User deleteEntity(String username) {
+        return RetrofitConfig.execute(retrofitClient.deleteEntity(username));
     }
 
 }

@@ -1,18 +1,18 @@
 package ua.goit.util;
 
 import retrofit2.converter.gson.GsonConverterFactory;
-import ua.goit.service.retrofit.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClientUser;
 
-public class BaseConnect {
-    private static final RetrofitClient retrofitClient;
+public class BaseConnectUser {
+    private static final RetrofitClientUser retrofitClient;
     private static final String BASE_URL = PropertiesLoader.getProperty("db.url");
 
     static {
         retrofitClient = RetrofitConfig.createClient(BASE_URL,
-                GsonConverterFactory.create(), RetrofitClient.class);
+                GsonConverterFactory.create(), RetrofitClientUser.class);
     }
 
-    public static RetrofitClient getClient() {
+    public static RetrofitClientUser getClient() {
         return retrofitClient;
     }
 }

@@ -11,7 +11,7 @@ public interface BaseService<ID, E extends BaseEntity<ID>>{
 
     E getEntity(ID id); // GET
 
-    ResponseBody deleteEntity(ID id); // DELETE
+    E deleteEntity(ID id); // DELETE
 
 
 }
