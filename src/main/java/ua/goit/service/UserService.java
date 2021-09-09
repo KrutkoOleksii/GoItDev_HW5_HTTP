@@ -1,12 +1,12 @@
-package ua.goit.repository;
+package ua.goit.service;
 
 import okhttp3.ResponseBody;
 import ua.goit.model.User;
-import ua.goit.service.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 
-public class UserRepository implements BaseRepository<String, User>{
+public class UserService implements BaseService<String, User> {
 
     RetrofitClient retrofitClient = BaseConnect.getClient();
 

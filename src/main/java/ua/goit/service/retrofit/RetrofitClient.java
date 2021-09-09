@@ -1,4 +1,4 @@
-package ua.goit.service;
+package ua.goit.service.retrofit;
 
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;

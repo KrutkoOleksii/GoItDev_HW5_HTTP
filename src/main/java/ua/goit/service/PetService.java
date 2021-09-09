@@ -1,16 +1,15 @@
-package ua.goit.repository;
+package ua.goit.service;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ua.goit.model.Pet;
-import ua.goit.service.RetrofitClient;
-import ua.goit.service.RetrofitClientPet;
+import ua.goit.service.retrofit.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 
 import java.util.List;
 
-public class PetRepository implements BaseRepository<Long, Pet>{
+public class PetService implements BaseService<Long, Pet> {
 
     RetrofitClient retrofitClient = BaseConnect.getClient();
 

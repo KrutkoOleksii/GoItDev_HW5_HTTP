@@ -4,7 +4,7 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import ua.goit.model.Pet;
-import ua.goit.service.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 

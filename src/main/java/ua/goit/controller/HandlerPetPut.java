@@ -1,8 +1,8 @@
 package ua.goit.controller;
 
 import ua.goit.model.Pet;
-import ua.goit.repository.BaseRepository;
-import ua.goit.repository.PetRepository;
+import ua.goit.service.BaseService;
+import ua.goit.service.PetService;
 
 public class HandlerPetPut extends HandlerMenu {
 
@@ -12,7 +12,7 @@ public class HandlerPetPut extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Long, Pet> petRepository = new PetRepository();
+        BaseService<Long, Pet> petRepository = new PetService();
         Pet updatePet = petRepository.updateEntity(getPetFromConsole());
         System.out.println("update Pet:\n" + updatePet.toString());
     }

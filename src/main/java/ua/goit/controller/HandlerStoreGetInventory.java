@@ -1,7 +1,7 @@
 package ua.goit.controller;
 
 import retrofit2.Call;
-import ua.goit.service.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 

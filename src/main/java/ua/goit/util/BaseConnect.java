@@ -1,7 +1,7 @@
 package ua.goit.util;
 
 import retrofit2.converter.gson.GsonConverterFactory;
-import ua.goit.service.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClient;
 
 public class BaseConnect {
     private static final RetrofitClient retrofitClient;

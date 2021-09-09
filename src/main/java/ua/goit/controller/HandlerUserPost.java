@@ -1,8 +1,8 @@
 package ua.goit.controller;
 
 import ua.goit.model.User;
-import ua.goit.repository.BaseRepository;
-import ua.goit.repository.UserRepository;
+import ua.goit.service.BaseService;
+import ua.goit.service.UserService;
 
 public class HandlerUserPost extends HandlerMenu {
 
@@ -12,7 +12,7 @@ public class HandlerUserPost extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<String, User> userRepository = new UserRepository();
+        BaseService<String, User> userRepository = new UserService();
         User user = userRepository.createEntity(getUserFromConsole());
         System.out.println("add User:\n" + user.toString());
     }

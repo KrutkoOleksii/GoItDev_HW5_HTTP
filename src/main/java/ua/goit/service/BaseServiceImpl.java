@@ -1,9 +1,9 @@
-package ua.goit.repository;
+package ua.goit.service;
 
 import okhttp3.ResponseBody;
 import ua.goit.model.BaseEntity;
 
-public abstract class BaseRepositoryImpl <ID,E extends BaseEntity<ID>> implements BaseRepository<ID,E>{
+public abstract class BaseServiceImpl<ID,E extends BaseEntity<ID>> implements BaseService<ID,E> {
 
     @Override
     public E createEntity(E e) {

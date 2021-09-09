@@ -1,7 +1,7 @@
 package ua.goit.controller;
 
 import ua.goit.model.Pet;
-import ua.goit.service.RetrofitClient;
+import ua.goit.service.retrofit.RetrofitClient;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 

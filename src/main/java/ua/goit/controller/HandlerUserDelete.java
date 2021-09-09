@@ -2,8 +2,8 @@ package ua.goit.controller;
 
 import okhttp3.ResponseBody;
 import ua.goit.model.User;
-import ua.goit.repository.BaseRepository;
-import ua.goit.repository.UserRepository;
+import ua.goit.service.BaseService;
+import ua.goit.service.UserService;
 
 public class HandlerUserDelete extends HandlerMenu {
 
@@ -13,7 +13,7 @@ public class HandlerUserDelete extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<String, User> userRepository = new UserRepository();
+        BaseService<String, User> userRepository = new UserService();
         ResponseBody deletedUser = userRepository.deleteEntity(command[2]);
         System.out.println("delete User By User Name:\n" + deletedUser.toString());
     }

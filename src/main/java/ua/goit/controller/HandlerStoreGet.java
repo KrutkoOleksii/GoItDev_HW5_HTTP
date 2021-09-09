@@ -1,8 +1,8 @@
 package ua.goit.controller;
 
 import ua.goit.model.Order;
-import ua.goit.repository.BaseRepository;
-import ua.goit.repository.OrderRepository;
+import ua.goit.service.BaseService;
+import ua.goit.service.OrderService;
 
 public class HandlerStoreGet extends HandlerMenu {
 
@@ -12,7 +12,7 @@ public class HandlerStoreGet extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        BaseRepository<Long, Order> orderRepository = new OrderRepository();
+        BaseService<Long, Order> orderRepository = new OrderService();
         Order orderById = orderRepository.getEntity(Long.valueOf(command[3]));
         System.out.println("get Order By Id:\n" + orderById.toString());
     }

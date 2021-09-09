@@ -1,9 +1,9 @@
-package ua.goit.repository;
+package ua.goit.service;
 
 import okhttp3.ResponseBody;
 import ua.goit.model.BaseEntity;
 
-public interface BaseRepository <ID, E extends BaseEntity<ID>>{
+public interface BaseService<ID, E extends BaseEntity<ID>>{
 
     E createEntity(E e); // POST
 
