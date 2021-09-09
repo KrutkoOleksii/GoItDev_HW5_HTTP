@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 import okhttp3.ResponseBody;
 import ua.goit.model.Pet;

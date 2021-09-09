@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 import ua.goit.model.User;
 import ua.goit.repository.BaseRepository;

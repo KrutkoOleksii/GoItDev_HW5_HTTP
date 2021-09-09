@@ -3,6 +3,7 @@ package ua.goit.repository;
 import okhttp3.ResponseBody;
 import ua.goit.model.Order;
 import ua.goit.service.RetrofitClient;
+import ua.goit.service.RetrofitClientStore;
 import ua.goit.util.BaseConnect;
 import ua.goit.util.RetrofitConfig;
 

@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -24,11 +24,12 @@ public class HandlerPetPostImage extends HandlerMenu {
 //        RequestBody file = RequestBody.create(MediaType.parse("image"),new File("dog2.jpg"));
 //        String addMetadata = "pet's image";
         RetrofitClient retrofitClient = BaseConnect.getClient();
-        File file = new File("dog2.jpg");
-        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file","dog2.jpg", RequestBody.create(MediaType.parse("image"), file));
+        System.out.println("enter the path of image with pet");
+        File file = new File(scanner.next());
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("file","dog1.jpg", RequestBody.create(MediaType.parse("image"), file));
         System.out.println("please enter additional metadata for image");
         MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", scanner.next());
-        RetrofitConfig.execute(retrofitClient.uploadPetImage(Long.valueOf(command[2]), addMetadata, filePart));
+        ResponseBody execute = RetrofitConfig.execute(retrofitClient.uploadPetImage(Long.valueOf(command[2]), addMetadata, filePart));
     }
 
     @Override

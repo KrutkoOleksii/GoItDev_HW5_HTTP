@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 import ua.goit.model.Category;
 import ua.goit.model.Order;
@@ -15,6 +15,7 @@ public abstract class HandlerMenu {
     public HandlerMenu(HandlerMenu handler) {
         this.handler = handler;
     }
+
     protected abstract void apply(String[] command);
 
     protected abstract boolean isApplicable(String[] command);

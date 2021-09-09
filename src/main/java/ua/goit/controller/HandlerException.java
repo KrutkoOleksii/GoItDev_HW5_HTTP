@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 public class HandlerException extends HandlerMenu{
 

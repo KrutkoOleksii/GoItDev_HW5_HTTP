@@ -1,4 +1,4 @@
-package ua.goit.service.handler;
+package ua.goit.controller;
 
 import retrofit2.Call;
 import ua.goit.service.RetrofitClient;
