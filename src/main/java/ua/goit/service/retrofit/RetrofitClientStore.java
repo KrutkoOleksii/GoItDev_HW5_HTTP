@@ -7,23 +7,24 @@ import ua.goit.model.Order;
 
 import java.util.Map;
 
-public interface RetrofitClientStore extends RetrofitClient<Long,Order>{
+public interface RetrofitClientStore {
+//public interface RetrofitClientStore extends RetrofitClient<Long,Order>{
 
     @GET("store/inventory")
     @Headers({"Content-Type: application/json"})
     Call<Map<String,Integer>> getInventory();
 
-    @Override
+    //@Override
     @POST("store/order")
     @Headers({"Content-Type: application/json"})
     Call<Order> addEntity(@Body Order order);
 
-    @Override
+    //@Override
     @GET("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
     Call<Order> getEntity(@Path("orderId") Long orderId);
 
-    @Override
+    //@Override
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
     Call<Order> deleteEntity(@Path("orderId") Long orderId);

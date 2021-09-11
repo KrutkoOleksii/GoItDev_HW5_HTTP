@@ -14,7 +14,7 @@ public class HandlerUserDelete extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseService<String, User> userRepository = new UserService();
-        ResponseBody deletedUser = userRepository.deleteEntity(command[2]);
+        User deletedUser = userRepository.deleteEntity(command[2]);
         System.out.println("delete User By User Name:\n" + deletedUser.toString());
     }
 
