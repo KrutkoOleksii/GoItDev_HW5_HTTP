@@ -1,13 +1,11 @@
-package ua.goit.service;
-
-import ua.goit.controller.HandlerMenu;
+package ua.goit.controller;
 
 import java.util.Scanner;
 
-public class MenuService {
+public class MenuController {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public MenuService mainMenu(MenuService console) {
+    public MenuController mainMenu(MenuController console) {
         String menuMain = new StringBuilder()
                 .append("Select the entity (number):\n")
                 .append("[1] Pet >>\n")
@@ -36,7 +34,7 @@ public class MenuService {
         return console;
     }
 
-    private MenuService menuPet(MenuService console) {
+    private MenuController menuPet(MenuController console) {
         String menuPet = new StringBuilder()
                 .append("\n--- Menu PET ---\n")
                 .append("Select the query and print it with the parameters:\n")
@@ -60,7 +58,7 @@ public class MenuService {
         return console;
     }
 
-    private MenuService menuStore(MenuService console) {
+    private MenuController menuStore(MenuController console) {
         String menuStore = new StringBuilder()
                 .append("\n--- Menu STORE ---\n")
                 .append("Select the query and print it with the parameters:\n")
@@ -81,7 +79,7 @@ public class MenuService {
         return console;
     }
 
-    private MenuService menuUser(MenuService console) {
+    private MenuController menuUser(MenuController console) {
         String menuUser = new StringBuilder()
                 .append("\n--- Menu USER ---\n")
                 .append("Select the query and print it with the parameters:\n")
