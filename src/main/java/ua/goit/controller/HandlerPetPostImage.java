@@ -21,17 +21,14 @@ public class HandlerPetPostImage extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         //TODO
-//        Reflections reflections = new Reflections("resources", new ResourcesScanner());
-//        Set<String> resources = reflections.getResources(Pattern.compile(".*\\.ipg"));
-//        RequestBody file = RequestBody.create(MediaType.parse("image"),new File("dog2.jpg"));
-//        String addMetadata = "pet's image";
+
         RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
         System.out.println("enter the path of image with pet");
         File file = new File(scanner.next());
         MultipartBody.Part filePart = MultipartBody.Part.createFormData(
                 "file",
-                "dog1.jpg",
-                RequestBody.create(MediaType.parse("file"), file));
+                file.getName(),
+                RequestBody.create(file, MediaType.parse("image/*")));
         System.out.println("please enter additional metadata for image");
         MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", scanner.next());
         ResponseBody execute = RetrofitConfig.execute(retrofitClient.uploadPetImage(Long.valueOf(command[2]), addMetadata, filePart));

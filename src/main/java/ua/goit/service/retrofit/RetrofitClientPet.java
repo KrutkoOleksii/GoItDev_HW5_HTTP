@@ -13,7 +13,7 @@ import java.util.List;
 //public interface RetrofitClientPet extends RetrofitClient<Long, Pet> {
 public interface RetrofitClientPet{
 
-        @Multipart
+    @Multipart
     @POST("pet/{petId}/uploadImage")
     @Headers({"Content-Type: application/json"})
     //Call<ResponseBody> uploadPetImage(@Path("petId") Integer id, @Part("additionalMetadata") String additionalMetadata, @Part("file") RequestBody image);
