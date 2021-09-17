@@ -19,9 +19,9 @@ public class HandlerPetPostFormdata extends HandlerMenu {
         //TODO
         RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
         System.out.println("please enter name of pet:");
-        RequestBody nameCat = RequestBody.create(MediaType.parse("string"), scanner.next());
+        RequestBody nameCat = RequestBody.create(scanner.next(),MediaType.parse("text/plain"));
         System.out.println("please enter pet status:");
-        RequestBody status = RequestBody.create(MediaType.parse("string"), scanner.next());
+        RequestBody status = RequestBody.create(scanner.next(),MediaType.parse("text/plain"));
         Call<Pet> petCall = retrofitClient.updatePetById(Long.valueOf(command[2]), nameCat, status);
         Pet petById = RetrofitConfig.execute(petCall);
         System.out.println("add Pet By Id:\n"+petById.toString());
