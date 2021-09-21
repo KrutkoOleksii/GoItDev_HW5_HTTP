@@ -22,12 +22,10 @@ public interface RetrofitClientPet{
     @POST("pet/{petId}/uploadImage")
     Call<ResponseBody> uploadPetImage(@Path("petId") Long id, @Part MultipartBody.Part filePart);
 
-    //@Override
     @POST("pet")
     @Headers({"Content-Type: application/json"})
     Call<Pet> addEntity(@Body Pet pet);
 
-    //@Override
     @PUT("pet")
     @Headers({"Content-Type: application/json"})
     Call<Pet> updateEntity(@Body Pet pet);
@@ -36,7 +34,6 @@ public interface RetrofitClientPet{
     @Headers({"Content-Type: application/json"})
     Call<List<Pet>> getPetByStatus(@Query("status") String[] status);
 
-    //@Override
     @GET("pet/{petId}")
     @Headers({"Content-Type: application/json"})
     Call<Pet> getEntity(@Path("petId") Long id);
@@ -44,19 +41,15 @@ public interface RetrofitClientPet{
     @FormUrlEncoded
     @POST("pet/{petId}")
     @Headers({"Content-Type: application/json"})
+    //Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
+    Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name);
+
+    @Multipart
+    @POST("pet/{petId}")
+    @Headers({"Content-Type: application/json"})
     //Call<Pet> updatePetById(@Path("petId") Long id, @Part MultipartBody.Part name, @Part MultipartBody.Part status);
-    Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
+    Call<Pet> updatePetById(@Path("petId") Long id, @Part MultipartBody.Part name);
 
-//    @Multipart
-//    @POST("pet/{petId}")
-//    @Headers({"Content-Type: application/json"})
-//    Call<Pet> updatePetById(@Path("petId") Long id, @Part("name") RequestBody name);
-
-//    @POST("pet/{petId}")
-//    Call<ResponseBody> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
-
-
-    //@Override
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
     Call<Pet> deleteEntity(@Path("petId") Long id);

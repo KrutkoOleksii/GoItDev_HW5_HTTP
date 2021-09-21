@@ -21,18 +21,17 @@ public class HandlerPetUpdateNameStatus extends HandlerMenu {
         RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
         System.out.println("please enter name of pet:");
         //MultipartBody.Part namePet = MultipartBody.Part.createFormData("name",scanner.next());
-        //MultipartBody.Part namePet = MultipartBody.Part.createFormData("name","TEST");
         //RequestBody namePet = RequestBody.create(scanner.next(),MediaType.parse("text/plain"));
-        RequestBody namePet = RequestBody.create(MediaType.parse("multipart/form-data"), scanner.next());
+        String namePet = scanner.next();
 
         System.out.println("please enter pet status:");
         //MultipartBody.Part statusPet = MultipartBody.Part.createFormData("status",scanner.next());
         String statusPet = scanner.next();
 
-        //Call<Pet> petCall = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet, statusPet);
         Call<Pet> petCall = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet);
+        //Call<Pet> petCall = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet, statusPet);
         Pet petById = RetrofitConfig.execute(petCall);
-        System.out.println("add Pet By Id:\n"+petById.toString());
+        System.out.println("update Pet By Id:\n"+petById.toString());
     }
 
     @Override
