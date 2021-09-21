@@ -27,7 +27,7 @@ public abstract class HandlerMenu {
 
     public static HandlerMenu of() {
         return new HandlerPetDelete(new HandlerPetGetById(new HandlerPetGetByStatus(
-                new HandlerPetPost(new HandlerPetPostFormdata(new HandlerPetPostImage(
+                new HandlerPetPost(new HandlerPetUpdateNameStatus(new HandlerPetPostUploadImage(
                 new HandlerPetPut(new HandlerStoreDelete(new HandlerStoreGet(
                 new HandlerStoreGetInventory(new HandlerStorePost(new HandlerUserDelete(
                 new HandlerUserGet(new HandlerUserGetLogin(new HandlerUserGetLogout(
