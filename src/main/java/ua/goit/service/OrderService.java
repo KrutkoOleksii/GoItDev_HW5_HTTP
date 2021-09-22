@@ -1,9 +1,12 @@
 package ua.goit.service;
 
+import retrofit2.Call;
 import ua.goit.model.Order;
 import ua.goit.service.retrofit.RetrofitClientStore;
 import ua.goit.util.BaseConnectStore;
 import ua.goit.util.RetrofitConfig;
+
+import java.util.Map;
 
 public class OrderService implements BaseService<Long, Order> {
 
@@ -27,6 +30,11 @@ public class OrderService implements BaseService<Long, Order> {
     @Override
     public Order deleteEntity(Long id) {
         return RetrofitConfig.execute(retrofitClient.deleteEntity(id));
+    }
+
+    public String  getInventory(){
+        Call<Map<String, Integer>> callInventory = retrofitClient.getInventory();
+        return RetrofitConfig.execute(callInventory).toString();
     }
 
 }

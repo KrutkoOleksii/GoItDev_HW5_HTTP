@@ -1,10 +1,6 @@
 package ua.goit.controller;
 
-import retrofit2.Call;
-import ua.goit.model.User;
-import ua.goit.service.retrofit.RetrofitClientUser;
-import ua.goit.util.BaseConnectUser;
-import ua.goit.util.RetrofitConfig;
+import ua.goit.service.UserService;
 
 public class HandlerUserGetLogin extends HandlerMenu {
 
@@ -14,16 +10,12 @@ public class HandlerUserGetLogin extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
         System.out.println("Enter Username:");
         String username = scanner.next();
         System.out.println("Enter Password:");
         String password = scanner.next();
-
-        RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
-        Call<User> managerLogin = retrofitClient.userLogin(username, password);
-        User userLogin = RetrofitConfig.execute(managerLogin);
-        System.out.println("User login:\n" + userLogin.toString());
+        UserService userRepository = new UserService();
+        System.out.println("User login:\n" + userRepository.userLogin(username,password));
     }
 
     @Override

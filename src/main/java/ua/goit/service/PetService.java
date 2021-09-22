@@ -40,8 +40,8 @@ public class PetService implements BaseService<Long, Pet> {
         return pet;
     }
 
-    public List<Pet> getPetByStatus(String[] status){
-        return RetrofitConfig.execute(retrofitClient.getPetByStatus(status));
+    public String getPetByStatus(String[] status){
+        return RetrofitConfig.execute(retrofitClient.getPetByStatus(status)).toString();
     }
 
     @SneakyThrows

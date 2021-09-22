@@ -1,10 +1,6 @@
 package ua.goit.controller;
 
-import retrofit2.Call;
-import ua.goit.model.User;
-import ua.goit.service.retrofit.RetrofitClientUser;
-import ua.goit.util.BaseConnectUser;
-import ua.goit.util.RetrofitConfig;
+import ua.goit.service.UserService;
 
 public class HandlerUserGetLogout extends HandlerMenu {
 
@@ -14,11 +10,8 @@ public class HandlerUserGetLogout extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
-        RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
-        Call<User> managerLogout = retrofitClient.userLogout();
-        User userLogout = RetrofitConfig.execute(managerLogout);
-        System.out.println("User logout:\n" + userLogout.toString());
+        UserService userRepository = new UserService();
+        System.out.println("User logout:\n" + userRepository.userLogout());
     }
 
     @Override
