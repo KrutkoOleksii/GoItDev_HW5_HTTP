@@ -15,7 +15,6 @@ public class HandlerStoreGetInventory extends HandlerMenu {
 
     @Override
     protected void apply(String[] command) {
-        //TODO
         RetrofitClientStore retrofitClient = BaseConnectStore.getClient();
         Call<Map<String, Integer>> callInventory = retrofitClient.getInventory();
         Map<String,Integer> inventory = RetrofitConfig.execute(callInventory);

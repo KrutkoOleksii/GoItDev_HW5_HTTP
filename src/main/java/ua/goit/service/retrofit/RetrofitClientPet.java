@@ -15,7 +15,6 @@ public interface RetrofitClientPet{
 
     @Multipart
     @POST("pet/{petId}/uploadImage")
-    @Headers({"Content-Type: application/json"})
     Call<ResponseBody> uploadPetImage(@Path("petId") Long id, @Part MultipartBody.Part filePart, @Part MultipartBody.Part additionalMetadata);
 
     @Multipart
@@ -40,15 +39,7 @@ public interface RetrofitClientPet{
 
     @FormUrlEncoded
     @POST("pet/{petId}")
-    @Headers({"Content-Type: application/json"})
-    //Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
-    Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name);
-
-    @Multipart
-    @POST("pet/{petId}")
-    @Headers({"Content-Type: application/json"})
-    //Call<Pet> updatePetById(@Path("petId") Long id, @Part MultipartBody.Part name, @Part MultipartBody.Part status);
-    Call<Pet> updatePetById(@Path("petId") Long id, @Part MultipartBody.Part name);
+    Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})

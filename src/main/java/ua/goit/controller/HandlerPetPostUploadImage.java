@@ -28,10 +28,9 @@ public class HandlerPetPostUploadImage extends HandlerMenu {
                 "file",
                 file.getName(),
                 RequestBody.create(file,MediaType.parse("image/*")));
-        //System.out.println("please enter additional metadata for image:");
-        //MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", scanner.next());
-        //Call<ResponseBody> uploadPetImage = retrofitClient.uploadPetImage(Long.valueOf(command[2]), filePart, addMetadata);
-        Call<ResponseBody> uploadPetImage = retrofitClient.uploadPetImage(Long.valueOf(command[2]), filePart);
+        System.out.println("please enter additional metadata for image:");
+        MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", scanner.next());
+        Call<ResponseBody> uploadPetImage = retrofitClient.uploadPetImage(Long.valueOf(command[2]), filePart, addMetadata);
         ResponseBody execute = RetrofitConfig.execute(uploadPetImage);
         System.out.println("Response Body: " + execute.string());
     }
