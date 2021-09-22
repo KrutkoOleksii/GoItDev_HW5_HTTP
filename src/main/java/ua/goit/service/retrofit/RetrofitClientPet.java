@@ -3,6 +3,7 @@ package ua.goit.service.retrofit;
 import okhttp3.MultipartBody;
 import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.Response;
 import retrofit2.http.*;
 
 import ua.goit.model.Pet;
@@ -38,7 +39,7 @@ public interface RetrofitClientPet{
 
     @FormUrlEncoded
     @POST("pet/{petId}")
-    Call<Pet> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
+    Call<ResponseBody> updatePetById(@Path("petId") Long id, @Field("name") String name, @Field("status") String status);
 
     @DELETE("pet/{petId}")
     @Headers({"Content-Type: application/json"})
