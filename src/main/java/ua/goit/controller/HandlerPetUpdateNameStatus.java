@@ -1,13 +1,7 @@
 package ua.goit.controller;
 
-import okhttp3.MediaType;
-import okhttp3.MultipartBody;
-import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import ua.goit.model.Pet;
-import ua.goit.service.BaseService;
-import ua.goit.service.PetService;
 import ua.goit.service.retrofit.RetrofitClientPet;
 import ua.goit.util.BaseConnectPet;
 import ua.goit.util.RetrofitConfig;
