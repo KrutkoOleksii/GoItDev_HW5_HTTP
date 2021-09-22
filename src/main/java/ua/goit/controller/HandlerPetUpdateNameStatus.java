@@ -1,13 +1,7 @@
 package ua.goit.controller;
 
 import lombok.SneakyThrows;
-import okhttp3.ResponseBody;
-import retrofit2.Call;
-import retrofit2.Response;
-import ua.goit.model.Pet;
-import ua.goit.service.retrofit.RetrofitClientPet;
-import ua.goit.util.BaseConnectPet;
-import ua.goit.util.RetrofitConfig;
+import ua.goit.service.PetService;
 
 public class HandlerPetUpdateNameStatus extends HandlerMenu {
 
@@ -18,14 +12,13 @@ public class HandlerPetUpdateNameStatus extends HandlerMenu {
     @SneakyThrows
     @Override
     protected void apply(String[] command) {
-        RetrofitClientPet retrofitClient = BaseConnectPet.getClient();
+        PetService petService = new PetService();
         System.out.println("please enter name of pet:");
         String namePet = scanner.next();
         System.out.println("please enter pet status:");
         String statusPet = scanner.next();
-        Call<ResponseBody> call = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet, statusPet);
-        ResponseBody response = RetrofitConfig.execute(call);
-        System.out.println("update Pet By Id:\n"+response.string());
+        String response = petService.updatePetById(command, namePet, statusPet);
+        System.out.println("update Pet By Id:\n"+response);
     }
 
     @Override

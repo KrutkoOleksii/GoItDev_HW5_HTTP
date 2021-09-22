@@ -1,6 +1,5 @@
 package ua.goit.controller;
 
-import okhttp3.ResponseBody;
 import ua.goit.model.Pet;
 import ua.goit.service.BaseService;
 import ua.goit.service.PetService;
