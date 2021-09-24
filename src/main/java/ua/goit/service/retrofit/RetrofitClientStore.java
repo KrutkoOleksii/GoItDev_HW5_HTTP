@@ -2,6 +2,7 @@ package ua.goit.service.retrofit;
 
 import retrofit2.Call;
 import retrofit2.http.*;
+import ua.goit.model.ApiResponse;
 import ua.goit.model.Order;
 
 import java.util.Map;
@@ -22,5 +23,5 @@ public interface RetrofitClientStore {
 
     @DELETE("store/order/{orderId}")
     @Headers({"Content-Type: application/json"})
-    Call<Order> deleteEntity(@Path("orderId") Long orderId);
+    Call<ApiResponse> deleteEntity(@Path("orderId") Long orderId);
 }

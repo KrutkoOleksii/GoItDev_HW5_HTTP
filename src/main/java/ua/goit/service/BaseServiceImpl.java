@@ -1,5 +1,7 @@
 package ua.goit.service;
 
+import okhttp3.ResponseBody;
+import retrofit2.Response;
 import ua.goit.model.BaseEntity;
 
 public abstract class BaseServiceImpl<ID,E extends BaseEntity<ID>> implements BaseService<ID,E> {
@@ -20,7 +22,7 @@ public abstract class BaseServiceImpl<ID,E extends BaseEntity<ID>> implements Ba
     }
 
     @Override
-    public E deleteEntity(ID id) {
+    public String deleteEntity(ID id) {
         return null;
     }
 

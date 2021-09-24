@@ -1,5 +1,6 @@
 package ua.goit.controller;
 
+import javax.naming.InsufficientResourcesException;
 import java.util.Scanner;
 
 public class MenuController {
@@ -17,7 +18,12 @@ public class MenuController {
         while (selection != 4) {
             System.out.println(menuMain);
             System.out.print("Insert selection: ");
-            selection = scanner.nextInt();
+            String s = scanner.next();
+            while (!"1234".contains(s)) {
+                System.out.print("Insert correct selection: ");
+                s = scanner.next();
+            }
+            selection = Integer.parseUnsignedInt(s);
             switch (selection) {
                 case 1:
                     return console.menuPet(console);
@@ -45,12 +51,17 @@ public class MenuController {
                 .append("   get|pet|{petId}\n")
                 .append("   get|pet|findByStatus\n")
                 .append("   delete|pet|{petId}\n")
+                .append("   menu\n")
                 .append("   exit")
                 .toString();
         System.out.println(menuPet);
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
+            if ("menu".equals(selection)) {
+                MenuController mainMenu = mainMenu(console);
+                break;
+            }
             String[] command = selection.split("\\|");
             if (command.length > 1) HandlerMenu.of().handle(command);
             System.out.println(menuPet);
@@ -66,12 +77,17 @@ public class MenuController {
                 .append("   post|store|order\n")
                 .append("   get|store|order|{orderId}\n")
                 .append("   delete|store|order|{orderId}\n")
+                .append("   menu\n")
                 .append("   exit")
                 .toString();
         System.out.println(menuStore);
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
+            if ("menu".equals(selection)) {
+                MenuController mainMenu = mainMenu(console);
+                break;
+            }
             String[] command = selection.split("\\|");
             if (command.length > 1) HandlerMenu.of().handle(command);
             System.out.println(menuStore);
@@ -91,12 +107,17 @@ public class MenuController {
                 .append("   get|user|logout\n")
                 .append("   put|user|{username}\n")
                 .append("   delete|user|{username}\n")
+                .append("   menu\n")
                 .append("   exit")
                 .toString();
         System.out.println(menuUser);
         String selection = "";
         while (!"exit".equals(selection)) {
             selection = scanner.next();
+            if ("menu".equals(selection)) {
+                MenuController mainMenu = mainMenu(console);
+                break;
+            }
             String[] command = selection.split("\\|");
             if (command.length > 1) HandlerMenu.of().handle(command);
             System.out.println(menuUser);

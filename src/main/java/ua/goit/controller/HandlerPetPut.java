@@ -19,7 +19,7 @@ public class HandlerPetPut extends HandlerMenu {
 
     @Override
     protected boolean isApplicable(String[] command) {
-        if (command.length==2) return "post".equals(command[0]) & "put".equals(command[1]);
+        if (command.length==2) return "put".equals(command[0]) & "pet".equals(command[1]);
         return false;
     }
 

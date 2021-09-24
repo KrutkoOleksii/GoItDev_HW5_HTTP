@@ -1,5 +1,6 @@
 package ua.goit.controller;
 
+import lombok.SneakyThrows;
 import ua.goit.model.User;
 import ua.goit.service.BaseService;
 import ua.goit.service.UserService;
@@ -10,11 +11,11 @@ public class HandlerUserDelete extends HandlerMenu {
         super(handler);
     }
 
+    @SneakyThrows
     @Override
     protected void apply(String[] command) {
         BaseService<String, User> userRepository = new UserService();
-        User deletedUser = userRepository.deleteEntity(command[2]);
-        System.out.println("delete User By User Name:\n" + deletedUser.toString());
+        System.out.println("delete User By User Name:\n" + userRepository.deleteEntity(command[2]));
     }
 
     @Override

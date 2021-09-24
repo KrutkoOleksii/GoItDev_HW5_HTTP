@@ -4,15 +4,14 @@ import lombok.SneakyThrows;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
+import ua.goit.model.ApiResponse;
 import ua.goit.model.Pet;
 import ua.goit.service.retrofit.RetrofitClientPet;
 import ua.goit.util.BaseConnectPet;
 import ua.goit.util.RetrofitConfig;
 
 import java.io.File;
-import java.util.List;
 
 public class PetService implements BaseService<Long, Pet> {
 
@@ -34,10 +33,8 @@ public class PetService implements BaseService<Long, Pet> {
     }
 
     @Override
-    public Pet deleteEntity(Long id) {
-        Call<Pet> responseCall = retrofitClient.deleteEntity(id);
-        Pet pet = RetrofitConfig.execute(responseCall);
-        return pet;
+    public String deleteEntity(Long id) {
+        return RetrofitConfig.execute(retrofitClient.deleteEntity(id)).toString();
     }
 
     public String getPetByStatus(String[] status){
@@ -52,13 +49,13 @@ public class PetService implements BaseService<Long, Pet> {
                 file.getName(),
                 RequestBody.create(file, MediaType.parse("image/*")));
         MultipartBody.Part addMetadata = MultipartBody.Part.createFormData("additionalMetadata", additionalMetadata);
-        Call<ResponseBody> uploadPetImage = retrofitClient.uploadPetImage(Long.valueOf(command[2]), filePart, addMetadata);
-        return RetrofitConfig.execute(uploadPetImage).string();
+        Call<ApiResponse> uploadPetImage = retrofitClient.uploadPetImage(Long.valueOf(command[2]), filePart, addMetadata);
+        return RetrofitConfig.execute(uploadPetImage).toString();
     }
 
     @SneakyThrows
     public String updatePetById(String[] command, String namePet, String statusPet){
-        Call<ResponseBody> call = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet, statusPet);
-        return RetrofitConfig.execute(call).string();
+        Call<ApiResponse> call = retrofitClient.updatePetById(Long.valueOf(command[2]), namePet, statusPet);
+        return RetrofitConfig.execute(call).toString();
     }
 }

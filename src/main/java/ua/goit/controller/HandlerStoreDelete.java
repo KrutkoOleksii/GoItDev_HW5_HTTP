@@ -1,5 +1,6 @@
 package ua.goit.controller;
 
+import lombok.SneakyThrows;
 import ua.goit.model.Order;
 import ua.goit.service.BaseService;
 import ua.goit.service.OrderService;
@@ -10,11 +11,11 @@ public class HandlerStoreDelete extends HandlerMenu {
         super(handler);
     }
 
+    @SneakyThrows
     @Override
     protected void apply(String[] command) {
         BaseService<Long, Order> orderRepository = new OrderService();
-        Order deletedOrder = orderRepository.deleteEntity(Long.valueOf(command[3]));
-        System.out.println("delete Order By Id:\n" + deletedOrder);
+        System.out.println("delete Order By Id:\n" + orderRepository.deleteEntity(Long.valueOf(command[3])));
     }
 
     @Override

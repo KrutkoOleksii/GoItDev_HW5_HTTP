@@ -1,6 +1,7 @@
 package ua.goit.service;
 
 import okhttp3.ResponseBody;
+import retrofit2.Response;
 import ua.goit.model.BaseEntity;
 
 public interface BaseService<ID, E extends BaseEntity<ID>>{
@@ -11,7 +12,7 @@ public interface BaseService<ID, E extends BaseEntity<ID>>{
 
     E getEntity(ID id); // GET
 
-    E deleteEntity(ID id); // DELETE
+    String deleteEntity(ID id); // DELETE
 
 
 }

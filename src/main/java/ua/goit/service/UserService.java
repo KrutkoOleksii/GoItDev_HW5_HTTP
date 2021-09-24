@@ -1,6 +1,6 @@
 package ua.goit.service;
 
-import retrofit2.Call;
+import lombok.SneakyThrows;
 import ua.goit.model.User;
 import ua.goit.service.retrofit.RetrofitClientUser;
 import ua.goit.util.BaseConnectUser;
@@ -28,29 +28,25 @@ public class UserService implements BaseService<String, User> {
     }
 
     @Override
-    public User deleteEntity(String username) {
-        return RetrofitConfig.execute(retrofitClient.deleteEntity(username));
+    public String deleteEntity(String username) {
+        return RetrofitConfig.execute(retrofitClient.deleteEntity(username)).toString();
     }
 
+    @SneakyThrows
     public String userLogin(String username, String password) {
-        Call<User> managerLogin = retrofitClient.userLogin(username, password);
-        return RetrofitConfig.execute(managerLogin).toString();
+        return RetrofitConfig.execute(retrofitClient.userLogin(username, password)).toString();
     }
 
+    @SneakyThrows
     public String userLogout() {
-        Call<User> managerLogout = retrofitClient.userLogout();
-        return RetrofitConfig.execute(managerLogout).toString();
+        return RetrofitConfig.execute(retrofitClient.userLogout()).toString();
     }
 
     public String createUserWithArray(User[] usersArray) {
-        RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
-        Call<List<User>> usersWithArray = retrofitClient.createUserWithArray(usersArray);
-        return RetrofitConfig.execute(usersWithArray).toString();
+        return RetrofitConfig.execute(retrofitClient.createUserWithArray(usersArray)).toString();
     }
 
     public String createUserWithList(List<User> users) {
-        RetrofitClientUser retrofitClient = BaseConnectUser.getClient();
-        Call<List<User>> userWithList = retrofitClient.createUserWithList(users);
-        return RetrofitConfig.execute(userWithList).toString();
+        return RetrofitConfig.execute(retrofitClient.createUserWithList(users)).toString();
     }
 }

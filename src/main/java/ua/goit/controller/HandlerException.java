@@ -8,7 +8,8 @@ public class HandlerException extends HandlerMenu{
 
     @Override
     public void apply(String[] command) {
-        throw new RuntimeException("Command '"+command[0]+"' for '"+command[1]+"' not found");
+        //throw new RuntimeException("Command '"+command[0]+"' for entity '"+command[1]+"' not found");
+        System.out.println("Command '"+command[0]+"' for entity '"+command[1]+"' not found");
     }
 
     @Override

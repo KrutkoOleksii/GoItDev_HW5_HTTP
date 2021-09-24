@@ -39,8 +39,11 @@ public abstract class HandlerMenu {
         System.out.println("enter the parameters of the new pet:\n" +
                 "{id}|{name}|{status}|{category}\n" +
                 "( e.g.  2|Barbos|available|dogs)");
-        String next = scanner.next();
-        String[] split = next.split("\\|");
+        String[] split = scanner.next().split("\\|");
+        while (split.length < 4) {
+            System.out.println("Parameters is not enough. Enter correct number of parameters - 4");
+            split = scanner.next().split("\\|");
+        }
         return Pet.builder()
                 .id(Long.valueOf(split[0]))
                 .name(split[1])
@@ -53,8 +56,11 @@ public abstract class HandlerMenu {
         System.out.println("enter the parameters of the new order:\n" +
                 "{id}|{petId}|{quantity}|{shipDate}|{status}|{complete}\n" +
                 "( e.g.  2|1|30|2021-09-09|placed|true)");
-        String next = scanner.next();
-        String[] split = next.split("\\|");
+        String[] split = scanner.next().split("\\|");
+        while (split.length < 6) {
+            System.out.println("Parameters is not enough. Enter correct number of parameters - 6");
+            split = scanner.next().split("\\|");
+        }
         return Order.builder()
                 .id(Long.valueOf(split[0]))
                 .petId(Long.valueOf(split[1]))
@@ -69,8 +75,11 @@ public abstract class HandlerMenu {
         System.out.println("enter the parameters of the new user:\n" +
                 "{id}|{username}|{firstName}|{LastName}|{email}|{password}|{phone}|{userStatus}\n" +
                 "( e.g. 2|Admin|John|Dow|john.d@company.com|12345|+380117654321|1)");
-        String next = scanner.next();
-        String[] split = next.split("\\|");
+        String[] split = scanner.next().split("\\|");
+        while (split.length < 8) {
+            System.out.println("Parameters is not enough. Enter correct number of parameters - 8");
+            split = scanner.next().split("\\|");
+        }
         return User.builder()
                 .id(Long.valueOf(split[0]))
                 .username(split[1])
