@@ -1,6 +1,7 @@
 package ua.goit.service;
 
 import lombok.SneakyThrows;
+import ua.goit.model.ApiResponse;
 import ua.goit.model.User;
 import ua.goit.service.retrofit.RetrofitClientUser;
 import ua.goit.util.BaseConnectUser;
@@ -43,7 +44,8 @@ public class UserService implements BaseService<String, User> {
     }
 
     public String createUserWithArray(User[] usersArray) {
-        return RetrofitConfig.execute(retrofitClient.createUserWithArray(usersArray)).toString();
+        ApiResponse users = RetrofitConfig.execute(retrofitClient.createUserWithArray(usersArray));
+        return users.toString();
     }
 
     public String createUserWithList(List<User> users) {

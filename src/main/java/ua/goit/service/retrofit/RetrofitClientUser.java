@@ -10,7 +10,7 @@ public interface RetrofitClientUser{
 
     @POST("user/createWithList")
     @Headers({"Content-Type: application/json"})
-    Call<List<User>> createUserWithList(@Body List<User> users);
+    Call<ApiResponse> createUserWithList(@Body List<User> users);
 
     @GET("user/{userName}")
     @Headers({"Content-Type: application/json"})
@@ -34,7 +34,7 @@ public interface RetrofitClientUser{
 
     @POST("user/createWithArray")
     @Headers({"Content-Type: application/json"})
-    Call<List<User>> createUserWithArray(@Body User[] users);
+    Call<ApiResponse> createUserWithArray(@Body User[] users);
 
     @POST("user")
     @Headers({"Content-Type: application/json"})
