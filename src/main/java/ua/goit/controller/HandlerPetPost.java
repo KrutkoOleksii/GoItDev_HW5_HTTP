@@ -14,7 +14,7 @@ public class HandlerPetPost extends HandlerMenu {
     protected void apply(String[] command) {
         BaseService<Long, Pet> petRepository = new PetService();
         Pet newPet = petRepository.createEntity(getPetFromConsole());
-        System.out.println("add Pet:\n" + newPet.toString());
+        System.out.println("add Pet:\n" + newPet);
     }
 
     @Override

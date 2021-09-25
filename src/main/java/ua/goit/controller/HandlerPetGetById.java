@@ -13,8 +13,8 @@ public class HandlerPetGetById extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseService<Long, Pet> petRepository = new PetService();
-        Pet getPet = petRepository.getEntity(Long.valueOf(command[2]));
-        System.out.println("get Pet By Id:\n" + getPet.toString());
+        Pet getPet = petRepository.getEntity(getLong(command[2]));
+        System.out.println("get Pet By Id '" + getLong(command[2]) + "':\n" + getPet);
     }
 
     @Override

@@ -13,8 +13,8 @@ public class HandlerStoreGet extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseService<Long, Order> orderRepository = new OrderService();
-        Order orderById = orderRepository.getEntity(Long.valueOf(command[3]));
-        System.out.println("get Order By Id:\n" + orderById.toString());
+        Order orderById = orderRepository.getEntity(getLong(command[3]));
+        System.out.println("get Order By Id '"+getLong(command[3])+"':\n" + orderById);
     }
 
     @Override

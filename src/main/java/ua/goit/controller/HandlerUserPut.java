@@ -14,7 +14,7 @@ public class HandlerUserPut extends HandlerMenu {
     protected void apply(String[] command) {
         BaseService<String, User> userRepository = new UserService();
         User newUser = userRepository.updateEntity(getUserFromConsole());
-        System.out.println("update User By User Name:\n" + newUser.toString());
+        System.out.println("update User By User Name:\n" + newUser);
     }
 
     @Override

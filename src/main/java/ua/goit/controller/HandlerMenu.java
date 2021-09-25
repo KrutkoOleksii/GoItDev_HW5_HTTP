@@ -38,14 +38,14 @@ public abstract class HandlerMenu {
     protected Pet getPetFromConsole() {
         System.out.println("enter the parameters of the new pet:\n" +
                 "{id}|{name}|{status}|{category}\n" +
-                "( e.g.  2|Barbos|available|dogs)");
+                "( e.g.  2|Jessie|available|dogs)");
         String[] split = scanner.next().split("\\|");
         while (split.length < 4) {
             System.out.println("Parameters is not enough. Enter correct number of parameters - 4");
             split = scanner.next().split("\\|");
         }
         return Pet.builder()
-                .id(Long.valueOf(split[0]))
+                .id(getLong(split[0]))
                 .name(split[1])
                 .status(split[2])
                 .category(new Category(0L,split[3]))
@@ -62,8 +62,8 @@ public abstract class HandlerMenu {
             split = scanner.next().split("\\|");
         }
         return Order.builder()
-                .id(Long.valueOf(split[0]))
-                .petId(Long.valueOf(split[1]))
+                .id(getLong(split[0]))
+                .petId(getLong(split[1]))
                 .quantity(Integer.valueOf(split[2]))
                 .shipDate(split[3])
                 .status(split[4])
@@ -81,7 +81,7 @@ public abstract class HandlerMenu {
             split = scanner.next().split("\\|");
         }
         return User.builder()
-                .id(Long.valueOf(split[0]))
+                .id(getLong(split[0]))
                 .username(split[1])
                 .firstName(split[2])
                 .lastName(split[3])
@@ -90,5 +90,13 @@ public abstract class HandlerMenu {
                 .phone(split[6])
                 .userStatus(Integer.valueOf(split[7]))
                 .build();
+    }
+
+    protected Long getLong(String string) {
+        try {
+            return Long.valueOf(string);
+        }catch (NumberFormatException e) {
+            return 0L;
+        }
     }
 }

@@ -15,7 +15,7 @@ public class HandlerPetDelete extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseService<Long, Pet> petService = new PetService();
-        System.out.println("delete Pet By Id:\n" + petService.deleteEntity(Long.valueOf(command[2])));
+        System.out.println("delete Pet By Id:\n" + petService.deleteEntity(getLong(command[2])));
     }
 
     @Override

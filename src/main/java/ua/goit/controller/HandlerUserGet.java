@@ -14,7 +14,7 @@ public class HandlerUserGet extends HandlerMenu {
     protected void apply(String[] command) {
         BaseService<String, User> userRepository = new UserService();
         User getUser = userRepository.getEntity(command[2]);
-        System.out.println("get User By User Name:\n" + getUser);
+        System.out.println("get User By User Name '" + command[2] + "':\n" + getUser);
     }
 
     @Override

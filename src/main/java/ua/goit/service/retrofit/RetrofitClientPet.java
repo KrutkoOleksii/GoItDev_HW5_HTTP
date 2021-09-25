@@ -15,10 +15,6 @@ public interface RetrofitClientPet{
     @POST("pet/{petId}/uploadImage")
     Call<ApiResponse> uploadPetImage(@Path("petId") Long id, @Part MultipartBody.Part filePart, @Part MultipartBody.Part additionalMetadata);
 
-    @Multipart
-    @POST("pet/{petId}/uploadImage")
-    Call<ApiResponse> uploadPetImage(@Path("petId") Long id, @Part MultipartBody.Part filePart);
-
     @POST("pet")
     @Headers({"Content-Type: application/json"})
     Call<Pet> addEntity(@Body Pet pet);

@@ -15,7 +15,7 @@ public class HandlerStoreDelete extends HandlerMenu {
     @Override
     protected void apply(String[] command) {
         BaseService<Long, Order> orderRepository = new OrderService();
-        System.out.println("delete Order By Id:\n" + orderRepository.deleteEntity(Long.valueOf(command[3])));
+        System.out.println("delete Order By Id:\n" + orderRepository.deleteEntity(getLong(command[3])));
     }
 
     @Override
